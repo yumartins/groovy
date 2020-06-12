@@ -9,6 +9,7 @@ lerna-debug.log*
 # project stuff
 node_modules
 build
+out
 
 # ide stuff
 .idea
