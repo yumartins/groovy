@@ -2,6 +2,7 @@
   "name": "app-music",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
   "repository": "https://github.com/yumartins/app-music.git",
   "author": "yumartins <yuri@estudioflow.com.br>",
   "license": "MIT",
@@ -21,6 +22,12 @@
     "bootstrap": "lerna bootstrap --use-workspaces"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.10.1",
+    "@babel/runtime": "^7.10.2",
+    "cross-env": "^7.0.2",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.21.2",
@@ -28,6 +35,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.4",
-    "lerna": "^3.22.1"
+    "lerna": "^3.22.1",
+    "nyc": "^15.1.0",
+    "supertest": "^4.0.2"
   }
 }
