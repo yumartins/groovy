@@ -1,0 +1,11 @@
+{
+  "name": "app-music",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yumartins/app-music.git",
+  "author": "yumartins <yuri@estudioflow.com.br>",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
