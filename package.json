@@ -14,6 +14,12 @@
       "**/react-native/**"
     ]
   },
+  "scripts": {
+    "test": "bash ./.bin/sugar.sh test $*",
+    "build": "bash .bin/sugar.sh build $*",
+    "dash": "yarn workspace neomedic-dash run start --stream",
+    "bootstrap": "lerna bootstrap --use-workspaces"
+  },
   "devDependencies": {
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.1.0",
