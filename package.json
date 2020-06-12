@@ -18,13 +18,13 @@
   "scripts": {
     "test": "bash ./.bin/sugar.sh test $*",
     "build": "bash .bin/sugar.sh build $*",
-    "dash": "yarn workspace neomedic-dash run start --stream",
+    "app": "yarn workspace app-dash run develop",
     "bootstrap": "lerna bootstrap --use-workspaces"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
-    "@babel/preset-react": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
     "@babel/register": "^7.10.1",
     "@babel/runtime": "^7.10.2",
     "cross-env": "^7.0.2",
@@ -38,5 +38,8 @@
     "lerna": "^3.22.1",
     "nyc": "^15.1.0",
     "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "react": "^16.13.1"
   }
 }

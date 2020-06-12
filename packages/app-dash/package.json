@@ -1,0 +1,28 @@
+{
+  "name": "app-dash",
+  "version": "0.0.1",
+  "description": "Dashboard for app music",
+  "main": "index.js",
+  "author": "Yuri Martins",
+  "private": false,
+  "scripts": {
+    "develop": "next",
+    "build": "next build && next export"
+  },
+  "babel": {
+    "presets": [
+      "next/babel",
+      "module:app-babel"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-do-expressions"
+    ]
+  },
+  "dependencies": {
+    "next": "^9.4.4",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-do-expressions": "^7.10.1"
+  }
+}
