@@ -1,0 +1,21 @@
+{
+  "name": "app-auth",
+  "version": "0.0.1",
+  "private": false,
+  "author": "Yuri Martins",
+  "description": "app authorization",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src --out-dir ./build --source-maps -D",
+    "coverage": "nyc --reporter=html mocha --require @babel/register",
+    "test": "cross-env NODE_ENV=testing mocha --require @babel/register"
+  },
+  "babel": {
+    "presets": [
+      "module:app-babel"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
