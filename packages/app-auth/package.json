@@ -12,7 +12,8 @@
   },
   "babel": {
     "presets": [
-      "module:app-babel"
+      "module:app-babel",
+      "@babel/preset-react"
     ]
   },
   "dependencies": {

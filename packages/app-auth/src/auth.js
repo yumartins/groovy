@@ -10,6 +10,9 @@ import axios from 'axios';
 const TOKEN_KEY = 'music-token';
 const TOKEN_USER = 'music-user';
 
+/**
+ * Module provider.
+ */
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     user: null,
