@@ -1,5 +1,6 @@
 export {
-  default as api,
+  api,
+  auth,
 } from './api';
 
 export {

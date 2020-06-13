@@ -46,8 +46,6 @@ const AuthProvider = ({ children }) => {
         scope: 'user-modify-playback-state',
       },
     });
-
-    console.log(response);
   };
 
   /**

@@ -19,6 +19,7 @@
     ]
   },
   "dependencies": {
+    "express": "^4.17.1",
     "next": "^9.4.4",
     "prop-types": "^15.7.2",
     "react-dom": "^16.13.1"
