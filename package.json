@@ -19,6 +19,7 @@
     "test": "bash ./.bin/sugar.sh test $*",
     "build": "bash .bin/sugar.sh build $*",
     "app": "yarn workspace app-dash run app",
+    "server": "yarn workspace app-server run server",
     "bootstrap": "lerna bootstrap --use-workspaces"
   },
   "devDependencies": {

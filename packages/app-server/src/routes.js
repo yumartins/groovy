@@ -1,25 +1,28 @@
 const express = require('express');
+const querystring = require('querystring');
 const request = require('request');
 require('dotenv/config');
 
 const routes = express.Router();
 
-const redirect_uri = process.env.APP_URL
-  || 'http://localhost:3000/app';
+const redirect_uri = `${process.env.API_URL}/app`
+  || 'http://localhost:5000/app';
+
+const query = querystring.stringify({
+  response_type: 'code',
+  client_id: process.env.SPOTIFY_CLIENT_ID,
+  scope: 'user-read-private', // 'user-read-private user-read-email'
+  redirect_uri,
+});
 
 routes.get('/', (req, res) => res.redirect(
-  `${process.env.SPOTIFY_AUTH}/authorize?
-    response_type=code
-    &client_id=${process.env.SPOTIFY_CLIENT_ID}
-    &scope=user-read-private user-read-email
-    &${redirect_uri}
-  `,
+  `${process.env.SPOTIFY_AUTH}/authorize?${decodeURIComponent(query)}`,
 ));
 
 routes.get('/app', (req, res) => {
   const code = req.query.code || null;
   const authOptions = {
-    url: 'https://accounts.spotify.com/api/token',
+    url: `${process.env.SPOTIFY_AUTH}/api/token`,
     form: {
       code,
       redirect_uri,
@@ -34,7 +37,7 @@ routes.get('/app', (req, res) => {
   };
   request.post(authOptions, (error, response, body) => {
     const { access_token } = body;
-    const uri = process.env.FRONTEND_URI || 'http://localhost:3000';
+    const uri = process.env.APP_URI || 'http://localhost:3000';
     res.redirect(`${uri}?access_token=${access_token}`);
   });
 });

@@ -6,7 +6,7 @@
   "author": "Yuri Martins",
   "private": false,
   "scripts": {
-    "app": "node ./server/index.js",
+    "app": "node ./index.js",
     "build": "next build && next export",
     "develop": "next"
   },
@@ -26,8 +26,6 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-do-expressions": "^7.10.1",
-    "dotenv": "^8.2.0",
-    "request": "^2.88.2"
+    "@babel/plugin-proposal-do-expressions": "^7.10.1"
   }
 }
