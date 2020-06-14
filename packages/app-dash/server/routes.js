@@ -1,4 +1,5 @@
 const express = require('express');
+const request = require('request');
 require('dotenv/config');
 
 const routes = express.Router();
@@ -14,5 +15,28 @@ routes.get('/', (req, res) => res.redirect(
     &${redirect_uri}
   `,
 ));
+
+routes.get('/app', (req, res) => {
+  const code = req.query.code || null;
+  const authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    form: {
+      code,
+      redirect_uri,
+      grant_type: 'authorization_code',
+    },
+    headers: {
+      Authorization: `Basic ${Buffer.from(
+        `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
+      ).toString('base64')}`,
+    },
+    json: true,
+  };
+  request.post(authOptions, (error, response, body) => {
+    const { access_token } = body;
+    const uri = process.env.FRONTEND_URI || 'http://localhost:3000';
+    res.redirect(`${uri}?access_token=${access_token}`);
+  });
+});
 
 module.exports = routes;
