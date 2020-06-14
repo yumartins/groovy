@@ -18,7 +18,7 @@
   "scripts": {
     "test": "bash ./.bin/sugar.sh test $*",
     "build": "bash .bin/sugar.sh build $*",
-    "app": "yarn workspace app-dash run app",
+    "app": "lerna run app --scope app-server --scope app-dash --parallel",
     "server": "yarn workspace app-server run server",
     "bootstrap": "lerna bootstrap --use-workspaces"
   },
@@ -44,5 +44,10 @@
   "dependencies": {
     "react": "^16.13.1",
     "styled-components": "^5.1.1"
+  },
+  "babel": {
+    "presets": [
+      "module:app-babel"
+    ]
   }
 }

@@ -6,7 +6,7 @@
   "description": "app server",
   "main": "build/index.js",
   "scripts": {
-    "server": "node ./src/index.js",
+    "app": "node ./src/index.js",
     "build": "babel src --out-dir ./build --source-maps -D",
     "coverage": "nyc --reporter=html mocha --require @babel/register",
     "test": "cross-env NODE_ENV=testing mocha --require @babel/register"
