@@ -27,25 +27,17 @@ const AuthProvider = ({ children }) => {
   } = state;
 
   /**
+   * Check if user is authenticated.
+   */
+  const check = async (force = false) => {};
+
+  /**
    * Authenticates user.
    */
-  const login = async () => {
-    const response = await axios.request({
-      url: '/api/token',
-      method: 'post',
-      baseURL: 'https://accounts.spotify.com',
-      auth: {
-        username: '1f8771683cc24a359bdb0abc34e3599c', // This is the client_id
-        password: 'cd41367f9bf74cc8b801813b206101f0', // This is the client_secret
-      },
-      data: {
-        grant_type: 'authorization_code',
-        authorization_url: 'https://accounts.spotify.com/authorize',
-        access_token_url: 'https://accounts.spotify.com/api/token',
-        redirect_url: 'https://yumartins.com.br/spotify',
-        scope: 'user-modify-playback-state',
-      },
-    });
+  const login = async (key) => {
+    await localStorage.setItem(TOKEN_KEY, key);
+
+    return check(true);
   };
 
   /**
