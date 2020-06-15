@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
   const fetchUser = async (token) => {
     if (! token) return null;
 
-    api.defaults.headers.common.Authorization = `${token}`;
+    api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     try {
       const { data } = await api.get('/me');
