@@ -3,6 +3,8 @@ import React from 'react';
 import { AuthContext, useReducer, useStoreModule } from 'app-hooks';
 import reducer from 'app-reduces';
 
+import { api } from './api';
+
 /**
  * Default token
  */
@@ -31,7 +33,19 @@ const AuthProvider = ({ children }) => {
   const fetchUser = async (token) => {
     if (! token) return null;
 
-    // api.defaults.headers.common.Authorization = `${token}`;
+    api.defaults.headers.common.Authorization = `${token}`;
+
+    try {
+      const { data } = await api.get('/me');
+
+      await localStorage.setItem(TOKEN_USER, data);
+
+      return data;
+    } catch (err) {
+      api.defaults.headers.common.Authorization = '';
+    }
+
+    return localStorage.getItem(TOKEN_USER);
   };
 
   /**

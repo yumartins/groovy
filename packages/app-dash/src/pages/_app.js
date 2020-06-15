@@ -42,6 +42,8 @@ const App = ({ Component, pageProps, router }) => {
       fetchInitial();
     }, []);
 
+    console.log(isLoggedIn);
+
     return <Component {...pageProps} />;
   };
 
