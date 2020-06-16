@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 
 import { AuthProvider } from 'app-auth';
 import { useAuth } from 'app-hooks';
+import { useRouter } from 'next/router';
 import {
-  bool,
   func,
   array,
   string,
@@ -13,13 +13,13 @@ import {
   oneOfType,
 } from 'prop-types';
 
-const App = ({ Component, pageProps, router }) => {
-  const { query } = router;
-
+const App = ({ Component, pageProps }) => {
   /**
    * Router.
    */
   const Router = () => {
+    const { query } = useRouter();
+
     const {
       run,
       isLoggedIn,
@@ -42,9 +42,11 @@ const App = ({ Component, pageProps, router }) => {
       fetchInitial();
     }, []);
 
-    console.log(isLoggedIn);
+    if (isLoggedIn) {
+      return <Component {...pageProps} />;
+    }
 
-    return <Component {...pageProps} />;
+    return <h1>Loading...</h1>;
   };
 
   return (
@@ -55,9 +57,6 @@ const App = ({ Component, pageProps, router }) => {
 };
 
 App.propTypes = {
-  router: objectOf(oneOfType([
-    func, bool, string, number, object, array,
-  ])),
   Component: func,
   pageProps: objectOf(oneOfType([
     string, number, object, array,
@@ -65,7 +64,6 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  router: {},
   Component: () => {},
   pageProps: {},
 };

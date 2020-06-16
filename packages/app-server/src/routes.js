@@ -21,6 +21,7 @@ routes.get('/', (req, res) => res.redirect(
 
 routes.get('/app', (req, res) => {
   const code = req.query.code || null;
+
   const authOptions = {
     url: `${process.env.SPOTIFY_AUTH}/api/token`,
     form: {
@@ -35,9 +36,12 @@ routes.get('/app', (req, res) => {
     },
     json: true,
   };
+
   request.post(authOptions, (error, response, body) => {
     const { access_token } = body;
+
     const uri = process.env.APP_URI || 'http://localhost:3000';
+
     res.redirect(`${uri}?access_token=${access_token}`);
   });
 });
