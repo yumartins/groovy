@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-import { AuthProvider } from 'app-auth';
-import { useAuth } from 'app-hooks';
-import { GlobalStyles } from 'app-styles';
+import { AuthProvider } from 'groovy-auth';
+import { useAuth } from 'groovy-hooks';
+import { GlobalStyles } from 'groovy-styles';
 import { useRouter } from 'next/router';
 import {
   func,

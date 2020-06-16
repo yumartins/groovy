@@ -1,5 +1,5 @@
 {
-  "name": "app-reduces",
+  "name": "groovy-reduces",
   "version": "0.0.1",
   "private": false,
   "author": "Yuri Martins",
@@ -12,7 +12,7 @@
   },
   "babel": {
     "presets": [
-      "module:app-babel"
+      "module:groovy-babel"
     ]
   }
 }

@@ -1,9 +1,9 @@
 {
-  "name": "app-styles",
+  "name": "groovy-auth",
   "version": "0.0.1",
   "private": false,
   "author": "Yuri Martins",
-  "description": "General styles for all applications",
+  "description": "app authorization",
   "main": "build/index.js",
   "scripts": {
     "build": "babel src --out-dir ./build --source-maps -D",
@@ -12,7 +12,11 @@
   },
   "babel": {
     "presets": [
-      "module:app-babel"
+      "module:groovy-babel",
+      "@babel/preset-react"
     ]
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { AuthContext, useReducer, useStoreModule } from 'app-hooks';
-import reducer from 'app-reduces';
+import { AuthContext, useReducer, useStoreModule } from 'groovy-hooks';
+import reducer from 'groovy-reduces';
 
 import { api } from './api';
 

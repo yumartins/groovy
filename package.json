@@ -1,9 +1,9 @@
 {
-  "name": "app-music",
+  "name": "groovy",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
-  "repository": "https://github.com/yumartins/app-music.git",
+  "repository": "https://github.com/yumartins/groovy-music.git",
   "author": "yumartins <yuri@estudioflow.com.br>",
   "license": "MIT",
   "workspaces": {
@@ -18,8 +18,8 @@
   "scripts": {
     "test": "bash ./.bin/sugar.sh test $*",
     "build": "bash .bin/sugar.sh build $*",
-    "app": "lerna run app --scope app-server --scope app-dash --parallel",
-    "server": "yarn workspace app-server run server",
+    "app": "lerna run app --scope groovy-server --scope groovy-dash --parallel",
+    "server": "yarn workspace groovy-server run server",
     "bootstrap": "lerna bootstrap --use-workspaces"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
   },
   "babel": {
     "presets": [
-      "module:app-babel"
+      "module:groovy-babel"
     ]
   }
 }

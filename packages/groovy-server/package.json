@@ -1,5 +1,5 @@
 {
-  "name": "app-server",
+  "name": "groovy-server",
   "version": "0.0.1",
   "private": false,
   "author": "Yuri Martins",
@@ -13,7 +13,7 @@
   },
   "babel": {
     "presets": [
-      "module:app-babel"
+      "module:groovy-babel"
     ]
   },
   "dependencies": {

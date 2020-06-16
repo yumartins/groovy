@@ -1,5 +1,5 @@
 {
-  "name": "app-dash",
+  "name": "groovy-dash",
   "version": "0.0.1",
   "description": "Dashboard for app music",
   "main": "index.js",
@@ -13,7 +13,7 @@
   "babel": {
     "presets": [
       "next/babel",
-      "module:app-babel"
+      "module:groovy-babel"
     ],
     "plugins": [
       "@babel/plugin-proposal-do-expressions"
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "feather-icons": "^4.28.0",
     "next": "^9.4.4",
     "prop-types": "^15.7.2",
     "react-dom": "^16.13.1"

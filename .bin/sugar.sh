@@ -16,9 +16,9 @@ else
 
   if [[ ${#workspaces[@]} -gt 1 ]]; then
     echo "Running command on $APPMUSIC_WORKSPACES workspaces"
-    eval "yarn lerna run $APPMUSIC_COMMAND --scope=app-{$APPMUSIC_WORKSPACES} --parallel $@"
+    eval "yarn lerna run $APPMUSIC_COMMAND --scope=groovy-{$APPMUSIC_WORKSPACES} --parallel $@"
   else
     echo "Running command on $APPMUSIC_WORKSPACES workspace"
-    eval "yarn lerna run $APPMUSIC_COMMAND --scope=app-$APPMUSIC_WORKSPACES --parallel $@"
+    eval "yarn lerna run $APPMUSIC_COMMAND --scope=groovy-$APPMUSIC_WORKSPACES --parallel $@"
   fi
 fi
