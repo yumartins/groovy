@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import { AuthProvider } from 'app-auth';
 import { useAuth } from 'app-hooks';
+import { GlobalStyles } from 'app-styles';
 import { useRouter } from 'next/router';
 import {
   func,
@@ -51,6 +52,7 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <AuthProvider>
+      <GlobalStyles />
       <Router />
     </AuthProvider>
   );

@@ -37,6 +37,8 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0"
           />
+
+          <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
         </Head>
         <body>
           <Main />
