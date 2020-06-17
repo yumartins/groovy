@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+import colors from './colors';
 import typograph from './typograph';
 
 const GlobalStyles = createGlobalStyle`
@@ -46,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: ${typograph.family};
-    background-color: #FFF;
+    background-color: ${colors.grays._600};
     margin: 0;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;

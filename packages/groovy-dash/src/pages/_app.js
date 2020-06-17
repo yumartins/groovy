@@ -14,6 +14,9 @@ import {
   oneOfType,
 } from 'prop-types';
 
+import Layout from '../layouts/App';
+import Sidebar from '../layouts/Sidebar';
+
 const App = ({ Component, pageProps }) => {
   /**
    * Router.
@@ -44,7 +47,12 @@ const App = ({ Component, pageProps }) => {
     }, []);
 
     if (isLoggedIn) {
-      return <Component {...pageProps} />;
+      return (
+        <Layout>
+          <Sidebar />
+          <Component {...pageProps} />
+        </Layout>
+      );
     }
 
     return <h1>Loading...</h1>;

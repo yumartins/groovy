@@ -55,5 +55,15 @@ module.exports = {
       alphabetize: { order: 'asc', ignoreCase: true },
     },
     ],
+    'no-underscore-dangle': [1, {
+      allow: [
+        '_100',
+        '_200',
+        '_300',
+        '_400',
+        '_500',
+        '_600',
+      ],
+    }],
   },
 };
