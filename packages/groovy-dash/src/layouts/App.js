@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
-const View = styled.div`
+export const Layout = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
 `;
 
-export default View;
+export const View = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

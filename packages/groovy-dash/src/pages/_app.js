@@ -14,8 +14,9 @@ import {
   oneOfType,
 } from 'prop-types';
 
-import Layout from '../layouts/App';
+import { View, Layout } from '../layouts/App';
 import Sidebar from '../layouts/Sidebar';
+import TopBar from '../layouts/TopBar';
 
 const App = ({ Component, pageProps }) => {
   /**
@@ -50,7 +51,11 @@ const App = ({ Component, pageProps }) => {
       return (
         <Layout>
           <Sidebar />
-          <Component {...pageProps} />
+
+          <View>
+            <TopBar />
+            <Component {...pageProps} />
+          </View>
         </Layout>
       );
     }
