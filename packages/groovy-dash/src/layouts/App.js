@@ -9,4 +9,6 @@ export const Layout = styled.div`
 export const View = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 100%;
 `;

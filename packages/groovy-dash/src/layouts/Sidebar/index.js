@@ -7,7 +7,6 @@ import {
   Item,
   Logo,
   View,
-  Items,
   Navigate,
   ListItems,
   ListTitle,
@@ -32,20 +31,18 @@ const Sidebar = () => {
           <ListItems key={label}>
             <ListTitle>{label}</ListTitle>
 
-            <Items>
-              {items.map(({ icon, name, route }) => (
-                <Link
-                  key={name}
-                  href={route}
-                  passHref
-                >
-                  <Item selected={pathname === route}>
-                    {icon}
-                    {name}
-                  </Item>
-                </Link>
-              ))}
-            </Items>
+            {items.map(({ icon, name, route }) => (
+              <Link
+                key={name}
+                href={route}
+                passHref
+              >
+                <Item selected={pathname === route}>
+                  {icon}
+                  {name}
+                </Item>
+              </Link>
+            ))}
           </ListItems>
         ))}
       </Navigate>

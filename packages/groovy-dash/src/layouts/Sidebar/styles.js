@@ -52,8 +52,6 @@ export const ListItems = styled.div`
   flex-direction: column;
 `;
 
-export const Items = styled.ul``;
-
 export const Item = styled.a`
   display: flex;
   align-items: center;
