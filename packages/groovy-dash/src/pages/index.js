@@ -1,5 +1,7 @@
+import { View } from '../styles/home';
+
 const Dash = () => (
-  <h1>Hello</h1>
+  <View />
 );
 
 export default Dash;

@@ -1,7 +1,11 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { ChevronDown } from 'react-feather';
+
+import { api } from 'groovy-auth';
 
 import Input from '../../components/Input';
 import {
+  User,
   Item,
   View,
   Form,
@@ -9,9 +13,20 @@ import {
 } from './styles';
 
 const TopBar = () => {
+  const [me, onMe] = useState({});
   const [selected, onSelected] = useState(0);
 
   const ref = useRef(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data } = await api.get('/me');
+
+      onMe(data);
+    };
+
+    getUser();
+  }, []);
 
   const items = [
     'Music',
@@ -41,6 +56,12 @@ const TopBar = () => {
           isSearch
         />
       </Form>
+
+      <User>
+        <span>{me.display_name}</span>
+        <img src={me.images && me.images[0].url} alt="" />
+        <ChevronDown />
+      </User>
     </View>
   );
 };
