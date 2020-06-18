@@ -1,3 +1,4 @@
+import { Form as Unform } from '@unform/web';
 import { colors, typograph } from 'groovy-styles';
 import styled from 'styled-components';
 
@@ -16,6 +17,8 @@ export const View = styled.nav`
   top: 0;
   position: fixed;
   padding: 24px 32px;
+  display: flex;
+  align-items: center;
 `;
 
 export const Navigate = styled.ul`
@@ -35,4 +38,10 @@ export const Item = styled.li`
   &:not(:first-child) {
     margin-left: 8px;
   }
+`;
+
+export const Form = styled(Unform)`
+  max-width: 324px;
+  width: 100%;
+  margin-left: 88px;
 `;

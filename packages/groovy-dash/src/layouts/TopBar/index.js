@@ -1,11 +1,10 @@
 import { useRef, useState } from 'react';
 
-import { Form } from '@unform/web';
-
 import Input from '../../components/Input';
 import {
   Item,
   View,
+  Form,
   Navigate,
 } from './styles';
 
