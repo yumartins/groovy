@@ -2,14 +2,20 @@ import { colors, typograph } from 'groovy-styles';
 import styled, { css } from 'styled-components';
 
 const {
+  grays,
+  white,
+  error: errors,
+} = colors;
+
+const {
   size,
   weight,
 } = typograph;
 
 export const Label = styled.label`
-  font-size: ${size.s3};
-  color: ${({ theme }) => theme.input.label};
-  font-weight: ${weight.semiBold};
+  font-size: ${size.s2}px;
+  color: ${grays._200};
+  font-weight: ${weight.bold};
   position: absolute;
   left: 24px;
   top: 18px;
@@ -18,46 +24,73 @@ export const Label = styled.label`
 `;
 
 export const Target = styled.input`
-  border: 1px solid ${({ theme }) => theme.input.border};
+  border: 1px solid ${grays._300};
   padding: 16px 24px;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 8px;
   height: 100%;
-  color: ${({ theme }) => theme.input.title};
-  font-size: ${size.s3};
-  font-weight: ${weight.semiBold};
+  color: ${white};
+  font-size: ${size.s2}px;
+  font-weight: ${weight.bold};
   background-color: transparent;
   transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 `;
 
-export const Wrapper = styled.div``;
+export const Icon = styled.span`
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  color: ${grays._100};
 
-export const View = styled.div`
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 56px;
+  background-color: ${grays._500};
+  display: flex;
+  align-items: center;
 
-  ${({ focus }) => focus && css`
+  ${({ hasIcon }) => hasIcon && css`
     ${Label} {
-      top: 8px;
-      font-size: ${size.s1};
-      font-weight: ${weight.regular};
+      left: 64px;
     }
 
     ${Target} {
-      padding: 24px 24px 8px 24px;
+      padding: 16px 24px 16px 64px;
     }
   `}
+
+  ${({ focus, hasIcon }) => focus && css`
+    ${Label} {
+      top: 8px;
+      font-size: ${size.s1}px;
+      font-weight: ${weight.semiBold};
+    }
+
+    ${Target} {
+      padding: ${hasIcon ? '24px 24px 8px 64px' : '24px 24px 8px 24px'};
+    }
+  `}
+`;
+
+export const View = styled.div`
+  width: 100%;
 
   ${({ error }) => error && css`
     margin-bottom: 24px;
 
     ${Label} {
-      color: ${colors.error};
+      color: ${errors};
     }
 
     ${Target} {
-      border-color: ${colors.error};
+      border-color: ${errors};
     }
   `}
 `;
@@ -66,6 +99,6 @@ export const Error = styled.span`
   margin-top: 4px;
   float: right;
   text-align: right;
-  font-size: ${size.s1};
-  color: ${colors.error};
+  font-size: ${size.s1}px;
+  color: ${errors};
 `;

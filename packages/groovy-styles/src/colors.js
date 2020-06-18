@@ -13,6 +13,8 @@ const colors = {
     _600: '#09090A',
   },
 
+  error: '#FC498E',
+
   white: '#FFFFFF',
 };
 

@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
+import { Search } from 'react-feather';
 
 import { useField } from '@unform/core';
-import { string } from 'prop-types';
+import { bool, string } from 'prop-types';
 
 import {
+  Icon,
   View,
   Label,
   Error,
@@ -14,6 +16,8 @@ import {
 const Input = ({
   name,
   label,
+  hasIcon,
+  isSearch,
   ...rest
 }) => {
   const [value, onValue] = useState('');
@@ -36,12 +40,19 @@ const Input = ({
   }, [fieldName, registerField]);
 
   return (
-    <View
-      error={error}
-      focus={value.length > 0}
-    >
-      <Wrapper>
+    <View error={error}>
+      <Wrapper
+        focus={value.length > 0}
+        hasIcon={hasIcon}
+      >
         <Label htmlFor={fieldName}>{label}</Label>
+
+        {hasIcon && (
+          <Icon>
+            {isSearch && <Search />}
+          </Icon>
+        )}
+
         <Target
           {...rest}
           id={fieldName}
@@ -58,6 +69,13 @@ const Input = ({
 Input.propTypes = {
   name: string.isRequired,
   label: string.isRequired,
+  hasIcon: bool,
+  isSearch: bool,
+};
+
+Input.defaultProps = {
+  hasIcon: false,
+  isSearch: false,
 };
 
 export default Input;
