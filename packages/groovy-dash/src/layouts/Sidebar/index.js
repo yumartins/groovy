@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import Groovy from '../../assets/svgs/logo.svg';
+import { H6 } from '../../components/Title';
 import routes from './routes';
 import {
   Item,
@@ -9,7 +10,6 @@ import {
   View,
   Navigate,
   ListItems,
-  ListTitle,
 } from './styles';
 
 const Sidebar = () => {
@@ -29,7 +29,7 @@ const Sidebar = () => {
       <Navigate>
         {routes.map(({ label, items }) => (
           <ListItems key={label}>
-            <ListTitle>{label}</ListTitle>
+            <H6 uppercase>{label}</H6>
 
             {items.map(({ icon, name, route }) => (
               <Link
@@ -37,7 +37,10 @@ const Sidebar = () => {
                 href={route}
                 passHref
               >
-                <Item selected={pathname === route}>
+                <Item
+                  as="a"
+                  selected={pathname === route}
+                >
                   {icon}
                   {name}
                 </Item>

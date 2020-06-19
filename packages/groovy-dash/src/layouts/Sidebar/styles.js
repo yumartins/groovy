@@ -1,6 +1,8 @@
 import { colors, typograph } from 'groovy-styles';
 import styled, { css } from 'styled-components';
 
+import { H6, P2 } from '../../components/Title';
+
 const {
   grays,
   primary,
@@ -8,7 +10,6 @@ const {
 
 const {
   size,
-  weight,
 } = typograph;
 
 export const View = styled.div`
@@ -39,25 +40,19 @@ export const Navigate = styled.nav`
   row-gap: 48px;
 `;
 
-export const ListTitle = styled.h5`
-  font-size: ${size.s1}px;
-  font-weight: ${weight.extraBold};
-  text-transform: uppercase;
-  color: ${grays._300};
-  letter-spacing: 1.8px;
-`;
-
 export const ListItems = styled.div`
   display: flex;
   flex-direction: column;
+
+  ${H6} {
+    color: ${grays._300};
+    letter-spacing: 1.8px;
+  }
 `;
 
-export const Item = styled.a`
+export const Item = styled(P2)`
   display: flex;
   align-items: center;
-  color: ${grays._100};
-  font-size: ${size.s2}px;
-  font-weight: ${weight.bold};
   margin-top: 16px;
   padding: 4px 0;
 
