@@ -1,5 +1,5 @@
 import { Form as Unform } from '@unform/web';
-import { colors, typograph } from 'groovy-styles';
+import { colors } from 'groovy-styles';
 import styled from 'styled-components';
 
 import { P2 } from '../../components/Title';
@@ -8,11 +8,6 @@ const {
   grays,
   primary,
 } = colors;
-
-const {
-  size,
-  weight,
-} = typograph;
 
 export const View = styled.nav`
   width: 100%;
@@ -52,11 +47,6 @@ export const User = styled.div`
   margin-left: auto;
   color: ${grays._300};
   cursor: pointer;
-
-  span {
-    font-size: ${size.s2}px;
-    font-weight: ${weight.bold};
-  }
 
   img {
     width: 32px;

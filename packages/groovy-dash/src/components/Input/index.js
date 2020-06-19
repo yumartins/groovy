@@ -45,7 +45,12 @@ const Input = ({
         focus={value.length > 0}
         hasIcon={hasIcon}
       >
-        <Label htmlFor={fieldName}>{label}</Label>
+        <Label
+          as="label"
+          htmlFor={fieldName}
+        >
+          {label}
+        </Label>
 
         {hasIcon && (
           <Icon>

@@ -4,6 +4,7 @@ import { ChevronDown } from 'react-feather';
 import { api } from 'groovy-auth';
 
 import Input from '../../components/Input';
+import { P2 } from '../../components/Title';
 import {
   User,
   Item,
@@ -60,7 +61,7 @@ const TopBar = () => {
       </Form>
 
       <User>
-        <span>{me.display_name}</span>
+        <P2>{me.display_name}</P2>
         <img src={me.images && me.images[0].url} alt="" />
         <ChevronDown />
       </User>

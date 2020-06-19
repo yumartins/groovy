@@ -1,6 +1,8 @@
 import { colors, typograph } from 'groovy-styles';
 import styled, { css } from 'styled-components';
 
+import { P2 } from '../Title';
+
 const {
   grays,
   white,
@@ -12,13 +14,11 @@ const {
   weight,
 } = typograph;
 
-export const Label = styled.label`
-  font-size: ${size.s2}px;
+export const Label = styled(P2)`
   color: ${grays._200};
-  font-weight: ${weight.bold};
   position: absolute;
   left: 24px;
-  top: 18px;
+  top: 20px;
   cursor: text;
   transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 `;
