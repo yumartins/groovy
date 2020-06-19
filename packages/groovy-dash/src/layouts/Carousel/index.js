@@ -33,11 +33,11 @@ const Carousel = ({
         data-active={index === selected}
       >
         <Content>
-          <span>{artists[0].name}</span>
+          <span>{artists && artists[0].name}</span>
           <h1>{name}</h1>
         </Content>
 
-        <Image src={images[0].url} alt="" />
+        <Image src={images && images[0].url} alt="" />
       </Items>
     ))}
   </View>
