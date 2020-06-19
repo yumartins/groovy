@@ -2,6 +2,8 @@ import { Form as Unform } from '@unform/web';
 import { colors, typograph } from 'groovy-styles';
 import styled from 'styled-components';
 
+import { P2 } from '../../components/Title';
+
 const {
   grays,
   primary,
@@ -27,11 +29,8 @@ export const Navigate = styled.ul`
   align-items: center;
 `;
 
-export const Item = styled.li`
-  text-transform: uppercase;
+export const Item = styled(P2)`
   letter-spacing: 1px;
-  font-weight: ${weight.extraBold};
-  font-size: ${size.s2}px;
   color: ${({ selected }) => (selected ? primary : grays._300)};
   padding: 4px 8px;
   cursor: pointer;

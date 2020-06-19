@@ -39,9 +39,11 @@ const TopBar = () => {
       <Navigate>
         {items.map((item, index) => (
           <Item
+            as="li"
             key={item}
             onClick={() => onSelected(index)}
             selected={selected === index}
+            uppercase
           >
             {item}
           </Item>
