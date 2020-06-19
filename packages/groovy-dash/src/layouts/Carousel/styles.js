@@ -52,7 +52,8 @@ export const Items = styled.div`
       pointer-events: all;
     }
 
-    &::before {
+    &::before,
+    &::after {
       content: "";
       position: absolute;
       z-index: 2;
@@ -60,7 +61,14 @@ export const Items = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(28% 72% at 72% -22%,rgba(9,9,10,0) 0%, ${grays._600} 162%);;
+    } 
+
+    &::before {
+      background: linear-gradient(260deg, rgba(9, 9, 10, .6) 0, rgba(9, 9, 10, 1) 50%);
+    }
+
+    &::after {
+      background: linear-gradient(to bottom, rgba(9, 9, 10, 0) 50%, rgba(9, 9, 10, 1));
     }
   `}
 `;
