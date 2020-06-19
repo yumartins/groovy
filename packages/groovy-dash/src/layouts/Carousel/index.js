@@ -21,7 +21,7 @@ const Carousel = ({
   <View>
     <Title>Trending New Hits</Title>
 
-    {items && items.map(({
+    {items && items.slice(0, 5).map(({
       id,
       name,
       images,
