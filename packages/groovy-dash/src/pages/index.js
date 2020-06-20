@@ -11,7 +11,11 @@ const Dash = () => {
 
   useEffect(() => {
     const getAlbums = async () => {
-      const { data } = await api.get('/browse/new-releases');
+      const { data } = await api.get('/browse/new-releases', {
+        params: {
+          country: 'US',
+        },
+      });
 
       onAlbums(data.albums.items);
     };
