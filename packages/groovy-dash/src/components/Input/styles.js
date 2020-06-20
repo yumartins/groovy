@@ -1,4 +1,4 @@
-import { colors, typograph } from 'groovy-styles';
+import { colors, easing, typograph } from 'groovy-styles';
 import styled, { css } from 'styled-components';
 
 import { P2 } from '../Title';
@@ -8,6 +8,10 @@ const {
   white,
   error: errors,
 } = colors;
+
+const {
+  elastic,
+} = easing;
 
 const {
   size,
@@ -20,7 +24,7 @@ export const Label = styled(P2)`
   left: 24px;
   top: 20px;
   cursor: text;
-  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all .5s ${elastic};
 `;
 
 export const Target = styled.input`
@@ -33,7 +37,7 @@ export const Target = styled.input`
   font-size: ${size.s2}px;
   font-weight: ${weight.bold};
   background-color: transparent;
-  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all .5s ${elastic};
 `;
 
 export const Icon = styled.span`

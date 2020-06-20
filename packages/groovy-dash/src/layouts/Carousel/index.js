@@ -5,11 +5,10 @@ import {
   arrayOf,
 } from 'prop-types';
 
-import { H1 } from '../../components/Title';
+import { H1, H6 } from '../../components/Title';
 import {
   View,
   Image,
-  Title,
   Items,
   Bullet,
   Content,
@@ -22,7 +21,7 @@ const Carousel = ({
   onSelected,
 }) => (
   <View>
-    <Title>Trending New Hits</Title>
+    <H6 uppercase>Trending New Hits</H6>
 
     {items && items.slice(0, 5).map(({
       id,

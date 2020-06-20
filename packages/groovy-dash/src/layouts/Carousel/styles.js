@@ -1,5 +1,7 @@
-import { colors } from 'groovy-styles';
+import { colors, easing } from 'groovy-styles';
 import styled, { css } from 'styled-components';
+
+import { H1, H6 } from '../../components/Title';
 
 const {
   grays,
@@ -7,17 +9,25 @@ const {
   primary,
 } = colors;
 
+const {
+  rubber,
+} = easing;
+
 export const View = styled.div`
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
 
-export const Title = styled.h5`
-  position: absolute;
-  z-index: 3;
+  ${H6} {
+    position: absolute;
+    z-index: 3;
+    left: 80px;
+    top: 124px;
+    letter-spacing: 1.2px;
+    color: ${grays._100};
+  }
 `;
 
 export const Image = styled.img`
@@ -30,6 +40,11 @@ export const Image = styled.img`
 export const Content = styled.div`
   z-index: 3;
   color: ${white};
+  padding-left: 80px;
+
+  ${H1} {
+    max-width: 624px;
+  }
 `;
 
 export const Items = styled.div`
@@ -86,11 +101,11 @@ export const Bullets = styled.div`
 
 export const Bullet = styled.button`
   width: 8px;
-  height: 8px;
+  height: ${({ selected }) => (selected ? '16px' : '8px')};
   margin: 8px 0;
   padding: 0;
-  border-radius: 50%;
+  border-radius: 24px;
   background-color: ${({ selected }) => (selected ? primary : grays._300)};
   opacity: ${({ selected }) => (selected ? 1 : '.48')};
-  
+  transition: all .8s ${rubber};
 `;
