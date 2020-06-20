@@ -8,5 +8,9 @@ export {
 } from './useReducer';
 
 export {
+  default as textReduce,
+} from './useHelpers';
+
+export {
   default as useStoreModule,
 } from './useStoreModule';

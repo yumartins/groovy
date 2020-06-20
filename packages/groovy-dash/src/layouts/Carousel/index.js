@@ -1,3 +1,4 @@
+import { textReduce } from 'groovy-hooks';
 import {
   func,
   number,
@@ -35,8 +36,8 @@ const Carousel = ({
         data-active={index === selected}
       >
         <Content>
-          <span>{artists && artists[0].name}</span>
-          <H1>{name}</H1>
+          <H6 uppercase>{artists && artists[0].name}</H6>
+          <H1>{textReduce(name, 36)}</H1>
         </Content>
 
         <Image src={images && images[0].url} alt="" />
@@ -51,7 +52,6 @@ const Carousel = ({
           type="button"
           onClick={() => onSelected(index)}
           selected={selected === index}
-          data-active={index === selected}
         />
       ))}
     </Bullets>

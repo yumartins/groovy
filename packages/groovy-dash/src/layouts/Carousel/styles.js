@@ -20,11 +20,11 @@ export const View = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  ${H6} {
+  & > ${H6} {
     position: absolute;
     z-index: 3;
     left: 80px;
-    top: 124px;
+    top: 126px;
     letter-spacing: 1.2px;
     color: ${grays._100};
   }
@@ -41,9 +41,25 @@ export const Content = styled.div`
   z-index: 3;
   color: ${white};
   padding-left: 80px;
+  display: flex;
+  flex-direction: column;
+
+  ${H1},
+  ${H6} {
+    top: -48px;
+    position: relative;
+  }
 
   ${H1} {
     max-width: 624px;
+    transition: all .8s ${rubber};
+  }
+
+  ${H6} {
+    color: ${grays._300};
+    margin-bottom: 12px;
+    letter-spacing: .8px;
+    transition: all 1.2s ${rubber};
   }
 `;
 
@@ -53,21 +69,40 @@ export const Items = styled.div`
   display: flex;
   align-items: center;
   min-height: 640px;
+  z-index: 0;
+  overflow-y: hidden;
 
   ${Image},
   ${Content} {
     opacity: 0;
     top: 0;
     pointer-events: none;
+    transition: all 1s ${rubber}; 
+  }
+
+  ${Image} {
+    top: -80px;
   }
 
   ${({ selected }) => selected && css`
+    z-index: 1;
     position: relative;
 
     ${Image},
     ${Content} {
       opacity: 1;
       pointer-events: all;
+    }
+
+    ${Content} {
+      ${H1},
+      ${H6} {
+        top: 0;
+      }
+    }
+
+    ${Image} {
+      top: 0;
     }
 
     &::before,
