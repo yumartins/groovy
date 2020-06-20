@@ -10,6 +10,9 @@ const {
 export const View = styled.div`
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const Title = styled.h5`
@@ -73,4 +76,21 @@ export const Items = styled.div`
   `}
 `;
 
-export const Bullets = styled.div``;
+export const Bullets = styled.div`
+  z-index: 3;
+  position: absolute;
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Bullet = styled.button`
+  width: 8px;
+  height: 8px;
+  margin: 8px 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: ${({ selected }) => (selected ? primary : grays._300)};
+  opacity: ${({ selected }) => (selected ? 1 : '.48')};
+  
+`;

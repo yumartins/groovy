@@ -5,12 +5,15 @@ import {
   arrayOf,
 } from 'prop-types';
 
+import { H1 } from '../../components/Title';
 import {
   View,
   Image,
   Title,
   Items,
+  Bullet,
   Content,
+  Bullets,
 } from './styles';
 
 const Carousel = ({
@@ -34,12 +37,25 @@ const Carousel = ({
       >
         <Content>
           <span>{artists && artists[0].name}</span>
-          <h1>{name}</h1>
+          <H1>{name}</H1>
         </Content>
 
         <Image src={images && images[0].url} alt="" />
       </Items>
     ))}
+
+    <Bullets>
+      {items && items.slice(0, 5).map((item, index) => (
+        <Bullet
+          key={item.id}
+          aria-label="bullet"
+          type="button"
+          onClick={() => onSelected(index)}
+          selected={selected === index}
+          data-active={index === selected}
+        />
+      ))}
+    </Bullets>
   </View>
 );
 
