@@ -1,7 +1,8 @@
 import { colors, typograph } from 'groovy-styles';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const {
+  white,
   grays,
   primary,
 } = colors;
@@ -30,6 +31,7 @@ const View = styled.button`
   font-weight: ${weight.bold};
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 56px;
   background-color: transparent;
   border: 1px solid transparent;
@@ -37,30 +39,37 @@ const View = styled.button`
   /**
    * Appearences
    */
-  ${({ appearance }) => appearance === appearances.white && `
+  ${({ appearance }) => appearance === appearances.white && css`
     color: ${grays._300};
     border-color: ${grays._300};
   `}
 
-  ${({ appearance }) => appearance === appearances.primary && `
+  ${({ appearance }) => appearance === appearances.primary && css`
     background-color: ${primary};
-    color: ${grays._100};
+    color: ${white};
   `}
 
-  ${({ appearance }) => appearance === appearances.secondary && `
+  ${({ appearance }) => appearance === appearances.secondary && css`
     color: ${primary};
-    border-color: ${grays._300};
+    border-color: ${grays._400};
   `}
 
   /**
    * Sizes
    */
-  ${({ size }) => size === sizes.sm && `
+  ${({ size }) => size === sizes.sm && css`
     padding: 8px 16px;
   `}
 
-  ${({ size }) => size === sizes.lg && `
-    padding: 14px 24px;
+  ${({ size, iconButton }) => size === sizes.lg && css`
+    padding: ${iconButton ? 0 : '14px 24px'};
+    width: ${iconButton ? '54px' : 'inherit'};
+    height: ${iconButton ? '54px' : 'inherit'};
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   `}
 `;
 

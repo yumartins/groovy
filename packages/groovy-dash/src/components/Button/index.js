@@ -12,6 +12,7 @@ const Button = ({
   <View
     {...rest}
     type={submit ? 'submit' : 'button'}
+    iconButton={hasIcon}
   >
     {! hasIcon
       ? label

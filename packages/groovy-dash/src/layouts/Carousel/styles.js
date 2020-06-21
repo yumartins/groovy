@@ -45,7 +45,8 @@ export const Content = styled.div`
   flex-direction: column;
 
   ${H1},
-  ${H6} {
+  ${H6},
+  button {
     top: -48px;
     position: relative;
   }
@@ -60,6 +61,28 @@ export const Content = styled.div`
     margin-bottom: 12px;
     letter-spacing: .8px;
     transition: all 1.2s ${rubber};
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+
+    button {
+      position: relative;
+
+      &:first-child {
+        transition: all .8s ${rubber};
+      }
+
+      &:last-child {
+        transition: all 1.2s ${rubber};
+      }
+    }
+
+    a {
+      margin-right: 24px;
+    }
   }
 `;
 
@@ -96,7 +119,8 @@ export const Items = styled.div`
 
     ${Content} {
       ${H1},
-      ${H6} {
+      ${H6},
+      button {
         top: 0;
       }
     }
