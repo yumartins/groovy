@@ -68,7 +68,7 @@ export const Items = styled.div`
   top: 0;
   display: flex;
   align-items: center;
-  min-height: 640px;
+  min-height: 664px;
   z-index: 0;
   overflow-y: hidden;
 
