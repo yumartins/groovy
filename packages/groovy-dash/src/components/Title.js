@@ -46,6 +46,7 @@ export const H6 = styled.h6`
   line-height: 16px;
   font-weight: ${weight.extraBold};
   color: ${grays._300};
+  letter-spacing: 1px;
   ${{ ...Title }}
 `;
 

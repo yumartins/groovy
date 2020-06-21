@@ -5,7 +5,13 @@ export const View = styled.div`
   flex-direction: column;
 `;
 
-export const List = styled.div``;
+export const List = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 24px;
+  padding: 0 24px;
+  position: relative;
+`;
 
 export const ListAlbums = styled.article``;
 

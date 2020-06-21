@@ -1,4 +1,10 @@
 import Link from 'next/link';
+import {
+  bool,
+  string,
+  object,
+  arrayOf,
+} from 'prop-types';
 
 import { H6, P2 } from '../../../components/Title';
 import {
@@ -11,6 +17,7 @@ const CardHome = ({
   route,
   title,
   children,
+  isVertical,
 }) => (
   <View>
     <Head>
@@ -25,10 +32,22 @@ const CardHome = ({
         </P2>
       </Link>
     </Head>
-    <Body>
+    <Body isVertical={isVertical}>
       {children}
     </Body>
   </View>
 );
+
+CardHome.propTypes = {
+  route: string.isRequired,
+  title: string.isRequired,
+  children: arrayOf(object),
+  isVertical: bool,
+};
+
+CardHome.defaultProps = {
+  children: [{}],
+  isVertical: false,
+};
 
 export default CardHome;
