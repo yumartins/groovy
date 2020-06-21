@@ -21,12 +21,13 @@ const Button = ({
 );
 
 Button.propTypes = {
-  label: string.isRequired,
+  label: string,
   submit: bool,
   hasIcon: bool,
 };
 
 Button.defaultProps = {
+  label: '',
   submit: false,
   hasIcon: false,
 };

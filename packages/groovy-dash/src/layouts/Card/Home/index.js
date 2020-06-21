@@ -32,7 +32,7 @@ const CardHome = ({
         </P2>
       </Link>
     </Head>
-    <Body isVertical={isVertical}>
+    <Body>
       {children}
     </Body>
   </View>

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { H6, P2 } from '../../../components/Title';
 
 const {
-  white,
   grays,
 } = colors;
 
@@ -38,6 +37,5 @@ export const Head = styled.div`
 `;
 
 export const Body = styled.div`
-  display: flex;
-  flex-direction: ${({ isVertical }) => (isVertical ? 'column' : 'row')}
+  margin-top: 24px;
 `;
