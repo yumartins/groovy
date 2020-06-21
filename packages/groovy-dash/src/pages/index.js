@@ -2,8 +2,14 @@ import { useState, useEffect } from 'react';
 
 import { api } from 'groovy-auth';
 
+import { CardHome as Card } from '../layouts/Card';
 import Carousel from '../layouts/Carousel';
-import { View } from '../styles/home';
+import {
+  List,
+  View,
+  ListTrack,
+  ListAlbums,
+} from '../styles/home';
 
 const Dash = () => {
   const [albums, onAlbums] = useState([]);
@@ -31,6 +37,16 @@ const Dash = () => {
           selected={selectedAlbum}
           onSelected={onSelectedAlbum}
         />
+
+        <List>
+          <ListAlbums>
+            <Card
+              title="Top Artists"
+              route="/artists"
+            />
+          </ListAlbums>
+          <ListTrack />
+        </List>
       </View>
     )
   );
