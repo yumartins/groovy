@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import { api } from 'groovy-auth';
+import Link from 'next/link';
 
+import { H5 } from '../components/Title';
 import { CardHome as Card } from '../layouts/Card';
 import Carousel from '../layouts/Carousel';
 import {
@@ -50,6 +52,8 @@ const Dash = () => {
     getArtists();
   }, [albums]);
 
+  console.log(artists);
+
   return (
     <View>
       <Carousel
@@ -65,11 +69,23 @@ const Dash = () => {
             route="/artists"
           >
             <Artists>
-              {artists && artists.map(({ id, name, images }) => (
-                <Artist key={id}>
-                  <img src={images[0].url} alt="" />
-                  <h6>{name}</h6>
-                </Artist>
+              {artists && artists.map(({
+                id,
+                name,
+                genres,
+                images,
+              }) => (
+                <Link
+                  key={id}
+                  href={`/artists/${id}`}
+                  passHref
+                >
+                  <Artist>
+                    <img src={images[0].url} alt="" />
+                    <span>{genres[0]}</span>
+                    <H5>{name}</H5>
+                  </Artist>
+                </Link>
               ))}
             </Artists>
           </Card>

@@ -33,6 +33,14 @@ export const H2 = styled.h2`
   ${{ ...Title }}
 `;
 
+export const H4 = styled.h4`
+  font-size: ${size.m2}px;
+  line-height: 32px;
+  font-weight: ${weight.bold};
+  color: ${white};
+  ${{ ...Title }}
+`;
+
 export const H5 = styled.h5`
   font-size: ${size.s3}px;
   line-height: 24px;
