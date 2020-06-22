@@ -22,7 +22,7 @@ const Dash = () => {
     const getAlbums = async () => {
       const { data } = await api.get('/browse/new-releases', {
         params: {
-          country: 'US',
+          country: 'BR',
         },
       });
 
@@ -33,52 +33,50 @@ const Dash = () => {
   }, []);
 
   useEffect(() => {
-    const listAlbums = albums && albums.slice(0, 5).map((album) => album.artists[0].id).toString();
-
     const getArtists = async () => {
-      const { data } = await api.get('/artists', {
-        params: {
-          ids: listAlbums || '0',
-        },
-      });
+      const listAlbums = albums && albums.slice(0, 5).map((album) => album.artists[0].id).toString();
 
-      onArtists(data.artists);
+      if (listAlbums) {
+        const { data } = await api.get('/artists', {
+          params: {
+            ids: listAlbums,
+          },
+        });
+
+        onArtists(data.artists);
+      }
     };
 
     getArtists();
   }, [albums]);
 
-  console.log(artists);
-
   return (
-    (
-      <View>
-        <Carousel
-          items={albums}
-          selected={selectedAlbum}
-          onSelected={onSelectedAlbum}
-        />
+    <View>
+      <Carousel
+        items={albums}
+        selected={selectedAlbum}
+        onSelected={onSelectedAlbum}
+      />
 
-        <List>
-          <ListAlbums>
-            <Card
-              title="Top Artists"
-              route="/artists"
-            >
-              <Artists>
-                {artists && artists.map(({ id, name, images }) => (
-                  <Artist key={id}>
-                    <img src={images[0].url} alt="" />
-                    <h6>{name}</h6>
-                  </Artist>
-                ))}
-              </Artists>
-            </Card>
-          </ListAlbums>
-          <ListTrack />
-        </List>
-      </View>
-    )
+      <List>
+        <ListAlbums>
+          <Card
+            title="Top Artists"
+            route="/artists"
+          >
+            <Artists>
+              {artists && artists.map(({ id, name, images }) => (
+                <Artist key={id}>
+                  <img src={images[0].url} alt="" />
+                  <h6>{name}</h6>
+                </Artist>
+              ))}
+            </Artists>
+          </Card>
+        </ListAlbums>
+        <ListTrack />
+      </List>
+    </View>
   );
 };
 

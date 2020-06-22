@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import {
-  bool,
   string,
   object,
-  arrayOf,
+  symbol,
+  objectOf,
+  oneOfType,
 } from 'prop-types';
 
 import { H6, P2 } from '../../../components/Title';
@@ -17,7 +18,6 @@ const CardHome = ({
   route,
   title,
   children,
-  isVertical,
 }) => (
   <View>
     <Head>
@@ -41,13 +41,13 @@ const CardHome = ({
 CardHome.propTypes = {
   route: string.isRequired,
   title: string.isRequired,
-  children: arrayOf(object),
-  isVertical: bool,
+  children: objectOf(oneOfType([
+    object, symbol,
+  ])),
 };
 
 CardHome.defaultProps = {
   children: [{}],
-  isVertical: false,
 };
 
 export default CardHome;
