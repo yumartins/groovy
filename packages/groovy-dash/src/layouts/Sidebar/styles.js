@@ -16,7 +16,8 @@ export const View = styled.div`
   background-color: ${grays._500};
   padding: 48px 96px 48px 48px; 
   height: 100vh;
-  position: relative;
+  position: fixed;
+  top: 0;
 `;
 
 export const Logo = styled.a`
