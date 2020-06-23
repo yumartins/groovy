@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { AuthProvider } from 'groovy-auth';
 import { useAuth } from 'groovy-hooks';
@@ -23,6 +23,8 @@ const App = ({ Component, pageProps }) => {
    * Router.
    */
   const Router = () => {
+    const [minimize, onMinimize] = useState(false);
+
     const { query } = useRouter();
 
     const {
@@ -50,9 +52,12 @@ const App = ({ Component, pageProps }) => {
     if (isLoggedIn) {
       return (
         <Layout>
-          <Sidebar />
+          <Sidebar
+            minimize={minimize}
+            onMinimize={onMinimize}
+          />
 
-          <View>
+          <View minimize={minimize}>
             <TopBar />
             <Component {...pageProps} />
           </View>

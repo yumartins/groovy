@@ -1,4 +1,9 @@
+import { easing } from 'groovy-styles';
 import styled from 'styled-components';
+
+const {
+  rubber,
+} = easing;
 
 export const Layout = styled.div`
   display: flex;
@@ -11,5 +16,6 @@ export const View = styled.div`
   flex-direction: column;
   width: 100%;
   position: relative;
-  margin-left: 230px;
+  transition: all .8s ${rubber};
+  margin-left: ${({ minimize }) => (minimize ? '72px' : '230px')};
 `;
