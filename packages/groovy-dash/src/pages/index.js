@@ -9,13 +9,16 @@ import Carousel from '../layouts/Carousel';
 import {
   List,
   View,
-  Artist,
+  Genres,
+  Charts,
   Artists,
   ListTrack,
   ListAlbums,
+  ListAlbumsBottom,
 } from '../styles/home';
 
 const Dash = () => {
+  const [genres, onGenres] = useState([]);
   const [albums, onAlbums] = useState([]);
   const [artists, onArtists] = useState([]);
   const [selectedAlbum, onSelectedAlbum] = useState(0);
@@ -31,7 +34,18 @@ const Dash = () => {
       onAlbums(data.albums.items);
     };
 
+    const getGenres = async () => {
+      const { data } = await api.get('/browse/categories', {
+        params: {
+          country: 'BR',
+        },
+      });
+
+      onGenres(data.categories.items);
+    };
+
     getAlbums();
+    getGenres();
   }, []);
 
   useEffect(() => {
@@ -52,8 +66,6 @@ const Dash = () => {
     getArtists();
   }, [albums]);
 
-  console.log(artists);
-
   return (
     <View>
       <Carousel
@@ -68,27 +80,57 @@ const Dash = () => {
             title="Top Artists"
             route="/artists"
           >
-            <Artists>
+            <Artists
+              title="Top Artists"
+              route="/artists"
+            >
               {artists && artists.map(({
                 id,
                 name,
-                genres,
+                genres: categories,
                 images,
               }) => (
                 <Link
                   key={id}
                   href={`/artists/${id}`}
-                  passHref
                 >
-                  <Artist>
+                  <a>
                     <img src={images[0].url} alt="" />
-                    <span>{genres[0]}</span>
+                    <span>{categories[0]}</span>
                     <H5>{name}</H5>
-                  </Artist>
+                  </a>
                 </Link>
               ))}
             </Artists>
           </Card>
+
+          <ListAlbumsBottom>
+            <Card
+              title="Genres"
+              route="/genres"
+            >
+              <Genres>
+                {genres && genres.slice(0, 4).map(({ id, name, icons }) => (
+                  <Link
+                    key={id}
+                    href={`/genres/${id}`}
+                  >
+                    <a>
+                      <img src={icons[0].url} alt="" />
+                      <H5>{name}</H5>
+                    </a>
+                  </Link>
+                ))}
+              </Genres>
+            </Card>
+
+            <Card
+              title="Top Charts"
+              route="/charts"
+            >
+              <Charts />
+            </Card>
+          </ListAlbumsBottom>
         </ListAlbums>
         <ListTrack />
       </List>

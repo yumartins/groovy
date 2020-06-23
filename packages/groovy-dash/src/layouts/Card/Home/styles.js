@@ -38,4 +38,5 @@ export const Head = styled.div`
 
 export const Body = styled.div`
   margin-top: 24px;
+  width: 100%;
 `;
