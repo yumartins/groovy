@@ -93,6 +93,23 @@ export const Minimize = styled.button`
   position: absolute;
   bottom: 48px;
   color: ${grays._100};
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  svg {
+    transform: rotate(0);
+  }
+
+  ${P2} {
+    margin-left: 16px;
+    position: relative;
+  }
+
+  svg,
+  ${P2} {
+    transition: all .8s ${rubber};
+  }
 `;
 
 export const View = styled.div`
@@ -124,7 +141,12 @@ export const View = styled.div`
       }
     }
 
+    ${Minimize} svg {
+      transform: rotate(180deg);
+    }
+
     ${Item} ${P2},
+    ${Minimize} ${P2},
     ${ListItems} ${H6}{
       left: -48px;
       opacity: 0;

@@ -1,3 +1,5 @@
+import { ArrowLeft } from 'react-feather';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { func, bool } from 'prop-types';
@@ -62,7 +64,8 @@ const Sidebar = ({
         type="button"
         onClick={() => onMinimize(! minimize)}
       >
-        Minimize
+        <ArrowLeft />
+        <P2>Minimize</P2>
       </Minimize>
     </View>
   );
