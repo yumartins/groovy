@@ -23,11 +23,13 @@ const Dash = () => {
   const [artists, onArtists] = useState([]);
   const [selectedAlbum, onSelectedAlbum] = useState(0);
 
+  const COUNTRY = 'BR';
+
   useEffect(() => {
     const getAlbums = async () => {
       const { data } = await api.get('/browse/new-releases', {
         params: {
-          country: 'BR',
+          country: COUNTRY,
         },
       });
 
@@ -37,7 +39,7 @@ const Dash = () => {
     const getGenres = async () => {
       const { data } = await api.get('/browse/categories', {
         params: {
-          country: 'BR',
+          country: COUNTRY,
         },
       });
 
