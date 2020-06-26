@@ -13,6 +13,7 @@ const {
 } = typograph;
 
 const Title = {
+  fontWeight: ({ regular }) => (regular ? weight.regular : weight.bold),
   textTransform: ({ uppercase }) => (uppercase ? 'uppercase' : 'inherit'),
   textAlign: ({ center }) => (center ? align.center : align.left),
 };

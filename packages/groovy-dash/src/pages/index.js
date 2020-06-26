@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react';
 import { api } from 'groovy-auth';
 import Link from 'next/link';
 
-import { H5 } from '../components/Title';
+import { H5, P2 } from '../components/Title';
 import { CardHome as Card } from '../layouts/Card';
 import Carousel from '../layouts/Carousel';
 import {
   List,
   View,
   Genres,
-  Charts,
   Artists,
+  Playlists,
   ListTrack,
   ListAlbums,
   ListAlbumsBottom,
@@ -21,6 +21,7 @@ const Dash = () => {
   const [genres, onGenres] = useState([]);
   const [albums, onAlbums] = useState([]);
   const [artists, onArtists] = useState([]);
+  const [playlists, onPlaylists] = useState({});
   const [selectedAlbum, onSelectedAlbum] = useState(0);
 
   const COUNTRY = 'BR';
@@ -46,8 +47,20 @@ const Dash = () => {
       onGenres(data.categories.items);
     };
 
+    const getPlaylists = async () => {
+      const { data } = await api.get('/browse/featured-playlists', {
+        params: {
+          country: COUNTRY,
+          limit: 4,
+        },
+      });
+
+      onPlaylists(data);
+    };
+
     getAlbums();
     getGenres();
+    getPlaylists();
   }, []);
 
   useEffect(() => {
@@ -67,6 +80,8 @@ const Dash = () => {
 
     getArtists();
   }, [albums]);
+
+  console.log(playlists);
 
   return (
     <View>
@@ -127,10 +142,29 @@ const Dash = () => {
             </Card>
 
             <Card
-              title="Top Charts"
-              route="/charts"
+              title="Top Playlists"
+              route="/playlists"
             >
-              <Charts />
+              <Playlists>
+                {playlists.playlists
+                  && playlists.playlists.items.map(({
+                    id, name, images, description,
+                  }, index) => (
+                    <Link
+                      key={id}
+                      href={`/playlists/${id}`}
+                    >
+                      <a>
+                        <P2>{`0${index + 1}`}</P2>
+                        <img src={images[0].url} alt="" />
+                        <div>
+                          <H5>{name}</H5>
+                          <P2 regular>{description}</P2>
+                        </div>
+                      </a>
+                    </Link>
+                  ))}
+              </Playlists>
             </Card>
           </ListAlbumsBottom>
         </ListAlbums>

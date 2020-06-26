@@ -1,7 +1,7 @@
 import { colors, typograph } from 'groovy-styles';
 import styled from 'styled-components';
 
-import { H5 } from '../components/Title';
+import { H5, P2 } from '../components/Title';
 
 const {
   white,
@@ -21,7 +21,7 @@ export const View = styled.div`
 
 export const List = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   column-gap: 24px;
   padding: 0 24px;
   position: relative;
@@ -98,7 +98,37 @@ export const Genres = styled.div`
   }
 `;
 
-export const Charts = styled.div``;
+export const Playlists = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 24px;
+
+  a {
+    display: flex;
+    align-items: center;
+
+    & > ${P2} {
+      letter-spacing: 2px;
+    }
+
+    img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-left: 16px;
+    }
+
+    div {
+      margin-left: 16px;
+
+      ${P2} {
+        margin-top: 4px;
+        line-height: 24px;
+      }
+    }
+  }
+`;
 
 export const ListAlbumsBottom = styled.div`
   display: grid;
