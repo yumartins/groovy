@@ -1,7 +1,7 @@
 import { colors, typograph } from 'groovy-styles';
 import styled from 'styled-components';
 
-import { H6, P2 } from '../../../components/Title';
+import { H6, P2 } from '../../components/Title';
 
 const {
   grays,
@@ -25,11 +25,9 @@ export const Head = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-
   ${H6} {
     color: ${grays._100};
   }
-
   ${P2} {
     color: ${grays._300};
     font-weight: ${weight.semiBold};

@@ -4,7 +4,7 @@ import { api } from 'groovy-auth';
 import Link from 'next/link';
 
 import { H5, P2 } from '../components/Title';
-import { CardHome as Card } from '../layouts/Card';
+import Card from '../layouts/Card';
 import Carousel from '../layouts/Carousel';
 import {
   List,
