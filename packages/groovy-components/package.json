@@ -1,0 +1,26 @@
+{
+  "name": "groovy-components",
+  "version": "0.0.1",
+  "private": false,
+  "author": "Yuri Martins",
+  "description": "app components",
+  "main": "build/index.js",
+  "scripts": {
+    "stories": "node ./src/index.js",
+    "build": "babel src --out-dir ./build --source-maps -D",
+    "coverage": "nyc --reporter=html mocha --require @babel/register",
+    "test": "cross-env NODE_ENV=testing mocha --require @babel/register"
+  },
+  "babel": {
+    "presets": [
+      "module:groovy-babel"
+    ]
+  },
+  "devDependencies": {
+    "@storybook/react": "^6.0.0-beta.37",
+    "babel-loader": "^8.1.0"
+  },
+  "dependencies": {
+    "react-dom": "^16.13.1"
+  }
+}

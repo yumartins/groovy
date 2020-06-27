@@ -29,6 +29,7 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.10.1",
     "@babel/runtime": "^7.10.2",
+    "babel-plugin-styled-components": "^1.10.7",
     "cross-env": "^7.0.2",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.1.0",
