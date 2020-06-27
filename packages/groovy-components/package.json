@@ -6,7 +6,7 @@
   "description": "app components",
   "main": "build/index.js",
   "scripts": {
-    "stories": "node ./src/index.js",
+    "stories": "start-storybook",
     "build": "babel src --out-dir ./build --source-maps -D",
     "coverage": "nyc --reporter=html mocha --require @babel/register",
     "test": "cross-env NODE_ENV=testing mocha --require @babel/register"
@@ -17,6 +17,8 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-docs": "^5.3.19",
     "@storybook/react": "^6.0.0-beta.37",
     "babel-loader": "^8.1.0"
   },
