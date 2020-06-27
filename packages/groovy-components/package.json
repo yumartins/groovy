@@ -6,14 +6,27 @@
   "description": "app components",
   "main": "build/index.js",
   "scripts": {
-    "build": "babel src --out-dir ./build --source-maps -D",
+    "build": "babel src/packages --out-dir ./build --source-maps -D",
     "stories": "start-storybook -c src/.storybook -p 3001 -s ./src",
     "coverage": "nyc --reporter=html mocha --require @babel/register",
     "test": "cross-env NODE_ENV=testing mocha --require @babel/register"
   },
   "babel": {
     "presets": [
-      "module:groovy-babel"
+      "module:groovy-babel",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-do-expressions",
+      [
+        "styled-components",
+        {
+          "ssr": true,
+          "displayName": false,
+          "preprocess": false,
+          "minify": true
+        }
+      ]
     ]
   },
   "devDependencies": {
