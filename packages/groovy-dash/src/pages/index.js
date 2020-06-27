@@ -130,13 +130,12 @@ const Dash = () => {
                 {playlists.playlists
                   && playlists.playlists.items.map(({
                     id, name, images, description,
-                  }, index) => (
+                  }) => (
                     <Link
                       key={id}
                       href={`/playlists/${id}`}
                     >
                       <a>
-                        <P2>{`0${index + 1}`}</P2>
                         <img src={images[0].url} alt="" />
                         <div>
                           <H5>{name}</H5>
@@ -168,6 +167,7 @@ const Dash = () => {
             </Card>
           </ListAlbumsBottom>
         </ListAlbums>
+
         <ListTrack>
           <Card
             title="Player"

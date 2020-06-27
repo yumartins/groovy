@@ -100,27 +100,23 @@ export const Genres = styled.div`
 
 export const Playlists = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   row-gap: 24px;
+  column-gap: 24px;
 
   a {
     display: flex;
-    align-items: center;
-
-    & > ${P2} {
-      letter-spacing: 2px;
-    }
+    flex-direction: column;
+    justify-content: center;
 
     img {
       width: 48px;
       height: 48px;
       object-fit: cover;
       border-radius: 8px;
-      margin-left: 16px;
     }
 
     div {
-      margin-left: 16px;
 
       ${P2} {
         margin-top: 4px;
