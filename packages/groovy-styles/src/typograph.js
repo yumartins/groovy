@@ -2,7 +2,7 @@
  * Typograph
  */
 const typography = {
-  family: '"Nunito Sans", sans-serif',
+  family: '"SF Pro Display", sans-serif',
 
   weight: {
     light: 300,

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 import { api } from 'groovy-auth';
-import { Button } from 'groovy-components';
 import Link from 'next/link';
 
 import { H5, P2 } from '../components/Title';

@@ -21,7 +21,7 @@ export const View = styled.div`
 
 export const List = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 2.2fr 1fr;
   column-gap: 24px;
   padding: 0 24px;
   position: relative;
@@ -54,14 +54,14 @@ export const Artists = styled.div`
 
     span {
       text-transform: uppercase;
-      font-size: ${size.s1}px;
+      font-size: 10px;
       font-weight: ${weight.bold};
       letter-spacing: 1px;
       padding: 2px 4px;
       border-radius: 4px;
       background-color: rgba(85, 110, 252, .2);
       color: ${primary};
-      margin: 12px 0 4px 0;
+      margin: 16px 0 8px 0;
     }
 
     ${H5} {
