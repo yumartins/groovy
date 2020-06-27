@@ -81,7 +81,7 @@ const Dash = () => {
     getArtists();
   }, [albums]);
 
-  console.log(playlists);
+  console.log(genres);
 
   return (
     <View>
@@ -123,25 +123,6 @@ const Dash = () => {
 
           <ListAlbumsBottom>
             <Card
-              title="Genres"
-              route="/genres"
-            >
-              <Genres>
-                {genres && genres.slice(0, 4).map(({ id, name, icons }) => (
-                  <Link
-                    key={id}
-                    href={`/genres/${id}`}
-                  >
-                    <a>
-                      <img src={icons[0].url} alt="" />
-                      <H5>{name}</H5>
-                    </a>
-                  </Link>
-                ))}
-              </Genres>
-            </Card>
-
-            <Card
               title="Top Playlists"
               route="/playlists"
             >
@@ -166,9 +147,35 @@ const Dash = () => {
                   ))}
               </Playlists>
             </Card>
+
+            <Card
+              title="Genres"
+              route="/genres"
+            >
+              <Genres>
+                {genres && genres.slice(0, 4).map(({ id, name, icons }) => (
+                  <Link
+                    key={id}
+                    href={`/genres/${id}`}
+                  >
+                    <a>
+                      <img src={icons[0].url} alt="" />
+                      <H5>{name}</H5>
+                    </a>
+                  </Link>
+                ))}
+              </Genres>
+            </Card>
           </ListAlbumsBottom>
         </ListAlbums>
-        <ListTrack />
+        <ListTrack>
+          <Card
+            title="Player"
+            route="/player"
+          >
+            <div style={{ height: '700px' }} />
+          </Card>
+        </ListTrack>
       </List>
     </View>
   );
