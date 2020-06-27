@@ -37,7 +37,8 @@
     "next-images": "^1.4.0",
     "prop-types": "^15.7.2",
     "react-dom": "^16.13.1",
-    "react-feather": "^2.0.8"
+    "react-feather": "^2.0.8",
+    "react-slick": "^0.26.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-do-expressions": "^7.10.1"
