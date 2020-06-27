@@ -16,7 +16,16 @@
       "module:groovy-babel"
     ],
     "plugins": [
-      "@babel/plugin-proposal-do-expressions"
+      "@babel/plugin-proposal-do-expressions",
+      [
+        "styled-components",
+        {
+          "ssr": true,
+          "displayName": false,
+          "preprocess": false,
+          "minify": true
+        }
+      ]
     ]
   },
   "dependencies": {
