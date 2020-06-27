@@ -16,10 +16,11 @@
     ]
   },
   "scripts": {
+    "app": "lerna run app --scope groovy-server --scope groovy-dash --parallel",
     "test": "bash ./.bin/sugar.sh test $*",
     "build": "bash .bin/sugar.sh build $*",
-    "app": "lerna run app --scope groovy-server --scope groovy-dash --parallel",
     "server": "yarn workspace groovy-server run server",
+    "stories": "lerna run stories --scope groovy-components --parallel",
     "bootstrap": "lerna bootstrap --use-workspaces"
   },
   "devDependencies": {
