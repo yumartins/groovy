@@ -1,3 +1,4 @@
+import 'swiper/swiper-bundle.min.css';
 import { useEffect, useState } from 'react';
 
 import { AuthProvider } from 'groovy-auth';
@@ -84,7 +85,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  Component: () => {},
+  Component: () => { },
   pageProps: {},
 };
 

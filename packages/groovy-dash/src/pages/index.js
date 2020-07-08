@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { H5, P2 } from '../components/Title';
 import Card from '../layouts/Card';
 import Carousel from '../layouts/Carousel';
+import Slider from '../layouts/Home/Card';
 import {
   List,
   View,
@@ -81,8 +82,6 @@ const Dash = () => {
     getArtists();
   }, [albums]);
 
-  console.log(genres);
-
   return (
     <View>
       <Carousel
@@ -101,68 +100,52 @@ const Dash = () => {
               title="Top Artists"
               route="/artists"
             >
-              {artists && artists.map(({
-                id,
-                name,
-                genres: categories,
-                images,
-              }) => (
-                <Link
-                  key={id}
-                  href={`/artists/${id}`}
-                >
-                  <a>
-                    <img src={images[0].url} alt="" />
-                    <span>{categories[0]}</span>
-                    <H5>{name}</H5>
-                  </a>
-                </Link>
-              ))}
+              {artists.length > 0
+                && artists.map(({
+                  id,
+                  name,
+                  genres: categories,
+                  images,
+                }) => (
+                    <Link
+                      key={id}
+                      href={`/artists/${id}`}
+                    >
+                      <a>
+                        <img src={images[0].url} alt="" />
+                        <span>{categories[0]}</span>
+                        <H5>{name}</H5>
+                      </a>
+                    </Link>
+                  ))}
             </Artists>
           </Card>
 
           <ListAlbumsBottom>
-            <Card
-              title="Top Playlists"
+            <Slider
               route="/playlists"
-            >
-              <Playlists>
-                {playlists.playlists
-                  && playlists.playlists.items.map(({
-                    id, name, images, description,
-                  }) => (
-                    <Link
-                      key={id}
-                      href={`/playlists/${id}`}
-                    >
-                      <a>
-                        <img src={images[0].url} alt="" />
-                        <div>
-                          <H5>{name}</H5>
-                          <P2 regular>{description}</P2>
-                        </div>
-                      </a>
-                    </Link>
-                  ))}
-              </Playlists>
-            </Card>
+              title="Top Playlists"
+              items={playlists.playlists && playlists.playlists.items}
+              slidesPerPage={2}
+            />
 
             <Card
               title="Genres"
               route="/genres"
             >
               <Genres>
-                {genres && genres.slice(0, 4).map(({ id, name, icons }) => (
-                  <Link
-                    key={id}
-                    href={`/genres/${id}`}
-                  >
-                    <a>
-                      <img src={icons[0].url} alt="" />
-                      <H5>{name}</H5>
-                    </a>
-                  </Link>
-                ))}
+                {genres.length > 0
+                  && genres.slice(0, 4).map(({ id, name, icons }) => (
+                    <Link
+                      key={id}
+                      href={`/genres/${id}`}
+                    >
+                      <a>
+                        <img src={icons[0].url} alt="" />
+                        <H5>{name}</H5>
+                      </a>
+                    </Link>
+                  ))}
               </Genres>
             </Card>
           </ListAlbumsBottom>
