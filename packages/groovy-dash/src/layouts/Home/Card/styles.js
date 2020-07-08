@@ -8,7 +8,6 @@ export const View = styled.div`
 export const Item = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 124px;
 
   img {
     width: 100%;

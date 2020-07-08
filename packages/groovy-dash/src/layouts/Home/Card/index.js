@@ -35,8 +35,9 @@ const Card = ({
 
   const params = {
     slidesPerView: slidesPerPage,
-    centeredSlides: true,
     spaceBetween: 16,
+    speed: 600,
+    loop: true,
   };
 
   return (

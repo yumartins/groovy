@@ -52,7 +52,7 @@ const Dash = () => {
       const { data } = await api.get('/browse/featured-playlists', {
         params: {
           country: COUNTRY,
-          limit: 4,
+          limit: 12,
         },
       });
 
