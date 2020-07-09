@@ -130,6 +130,7 @@ export const ListAlbumsBottom = styled.div`
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   column-gap: 24px;
+  width: 100%;
 `;
 
 export const ListTrack = styled.article``;

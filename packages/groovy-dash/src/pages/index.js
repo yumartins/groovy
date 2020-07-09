@@ -125,7 +125,7 @@ const Dash = () => {
             <Slider
               route="/playlists"
               title="Top Playlists"
-              items={playlists.playlists && playlists.playlists.items}
+              items={playlists?.playlists?.items}
               slidesPerPage={2}
             />
 

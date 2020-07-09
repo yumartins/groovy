@@ -30,8 +30,10 @@ const Card = ({
     speed: 1600,
     loop: true,
     rebuildOnUpdate: true,
-    centeredSlides: true,
+    // centeredSlides: true,
     grabCursor: true,
+    preloadImages: true,
+    updateOnImagesReady: true,
   };
 
   const goNext = () => {
@@ -85,11 +87,9 @@ const Card = ({
           Prev
         </button>
 
-        {items.length > 0 && (
-          <Swiper ref={ref} {...params}>
-            {items.map(renderItem)}
-          </Swiper>
-        )}
+        <Swiper ref={ref} {...params}>
+          {items.map(renderItem)}
+        </Swiper>
 
         <button
           type="button"
