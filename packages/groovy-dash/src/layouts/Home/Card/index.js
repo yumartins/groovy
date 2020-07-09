@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useCallback } from 'react';
 import Swiper from 'react-id-swiper';
 
 import Link from 'next/link';
@@ -19,26 +19,58 @@ const Card = ({
   items,
   slidesPerPage,
 }) => {
-  const [swiper, updateSwiper] = useState(null);
+  const ref = useRef(null);
+
+  // console.log(ref.current !== null && ref.current.swiper !== null && ref.current);
+
+  const params = {
+    slidesPerView: slidesPerPage,
+    // slidesPerGroup: slidesPerPage,
+    spaceBetween: 16,
+    speed: 1600,
+    loop: true,
+    rebuildOnUpdate: true,
+    centeredSlides: true,
+    grabCursor: true,
+  };
 
   const goNext = () => {
-    if (swiper !== null) {
-      swiper.slideNext();
+    if (ref.current !== null && ref.current.swiper !== null) {
+      ref.current.swiper.slideNext();
     }
   };
 
   const goPrev = () => {
-    if (swiper !== null) {
-      swiper.slidePrev();
+    if (ref.current !== null && ref.current.swiper !== null) {
+      ref.current.swiper.slidePrev();
     }
   };
 
-  const params = {
-    slidesPerView: slidesPerPage,
-    spaceBetween: 16,
-    speed: 600,
-    loop: true,
-  };
+  const renderItem = useCallback(({
+    id,
+    name,
+    icons,
+    genres,
+    images,
+    description,
+  }) => {
+    const image = images ? images[0].url : icons ? icons[0].url : '';
+
+    return (
+      <Item key={id}>
+        <Link href={`${route}/${id}`}>
+          <a>
+            <img src={image} alt="" />
+            <div>
+              <H5>{name}</H5>
+              {genres && <span>{genres[0]}</span>}
+              {description && <P2 regular>{description}</P2>}
+            </div>
+          </a>
+        </Link>
+      </Item>
+    );
+  }, [route]);
 
   return (
     <CardHome
@@ -54,35 +86,8 @@ const Card = ({
         </button>
 
         {items.length > 0 && (
-          <Swiper
-            {...params}
-            getSwiper={updateSwiper}
-          >
-            {items.map(({
-              id,
-              name,
-              icons,
-              genres,
-              images,
-              description,
-            }) => {
-              const image = images ? images[0].url : icons ? icons[0].url : '';
-
-              return (
-                <Item key={id}>
-                  <Link href={`${route}/${id}`}>
-                    <a>
-                      <img src={image} alt="" />
-                      <div>
-                        <H5>{name}</H5>
-                        {genres && <span>{genres[0]}</span>}
-                        {description && <P2 regular>{description}</P2>}
-                      </div>
-                    </a>
-                  </Link>
-                </Item>
-              );
-            })}
+          <Swiper ref={ref} {...params}>
+            {items.map(renderItem)}
           </Swiper>
         )}
 
