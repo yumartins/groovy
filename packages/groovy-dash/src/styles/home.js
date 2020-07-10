@@ -10,7 +10,6 @@ const {
 } = colors;
 
 const {
-  size,
   weight,
 } = typograph;
 
@@ -107,21 +106,22 @@ export const Playlists = styled.div`
   a {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     img {
-      width: 48px;
-      height: 48px;
+      height: 124px;
       object-fit: cover;
       border-radius: 8px;
     }
 
-    div {
+    ${H5} {
+      color: ${white};
+      font-weight: ${weight.bold};
+      margin: 16px 0 4px 0;
+    }
 
-      ${P2} {
-        margin-top: 4px;
-        line-height: 24px;
-      }
+    ${P2} {
+      line-height: 24px;
+      font-weight: ${weight.regular}
     }
   }
 `;
@@ -130,10 +130,11 @@ export const ListAlbumsBottom = styled.div`
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   column-gap: 24px;
-  width: 100%;
 `;
 
-export const ListTrack = styled.article``;
+export const ListTrack = styled.article`
+  width: 100%;
+`;
 
 export const ViewIsLoading = styled.div`
   position: fixed;

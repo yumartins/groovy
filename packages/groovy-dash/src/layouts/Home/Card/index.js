@@ -21,19 +21,17 @@ const Card = ({
 }) => {
   const ref = useRef(null);
 
-  // console.log(ref.current !== null && ref.current.swiper !== null && ref.current);
-
   const params = {
     slidesPerView: slidesPerPage,
     // slidesPerGroup: slidesPerPage,
-    spaceBetween: 16,
-    speed: 1600,
+    spaceBetween: 24,
+    speed: 1200,
     loop: true,
     rebuildOnUpdate: true,
     // centeredSlides: true,
     grabCursor: true,
-    preloadImages: true,
-    updateOnImagesReady: true,
+    // preloadImages: true,
+    // updateOnImagesReady: true,
   };
 
   const goNext = () => {

@@ -25,15 +25,15 @@ const Dash = () => {
 
   const COUNTRY = 'BR';
 
-  const { data: _albums } = useFetch(`/browse/new-releases?country=${COUNTRY}`);
-  const { data: _genres } = useFetch(`/browse/categories?country=${COUNTRY}`);
-  const { data: _playlists } = useFetch(`/browse/featured-playlists?country=${COUNTRY}&limit=12`);
+  const { data: _albums } = useFetch(`/browse/new-releases?country=${COUNTRY}&limit=5`);
+  const { data: _genres } = useFetch(`/browse/categories?country=${COUNTRY}&limit=4`);
+  const { data: _playlists } = useFetch(`/browse/featured-playlists?country=${COUNTRY}&limit=2`);
 
   const albums = _albums ? _albums.albums.items : [];
   const genres = _genres ? _genres.categories.items : [];
   const playlists = _playlists ? _playlists.playlists.items : [];
 
-  const listAlbums = albums && albums.slice(0, 5).map((album) => album.artists[0].id).toString();
+  const listAlbums = albums && albums.map((album) => album.artists[0].id).toString();
 
   const { data: _artists } = useFetch(`/artists?ids=${listAlbums && listAlbums}`);
 
@@ -49,6 +49,8 @@ const Dash = () => {
       </ViewIsLoading>
     );
   }
+
+  console.log(genres);
 
   return (
     <View>
@@ -89,19 +91,37 @@ const Dash = () => {
           </Card>
 
           <ListAlbumsBottom>
-            <Slider
+            <Card
+              title="Playlists"
               route="/playlists"
-              title="Top Playlists"
-              items={playlists}
-              slidesPerPage={2}
-            />
+            >
+              <Playlists>
+                {playlists.map(({
+                  id,
+                  name,
+                  images,
+                  description,
+                }) => (
+                  <Link
+                    key={id}
+                    href={`/playlists/${id}`}
+                  >
+                    <a>
+                      <img src={images[0].url} alt="" />
+                      <H5>{name}</H5>
+                      <P2>{description}</P2>
+                    </a>
+                  </Link>
+                ))}
+              </Playlists>
+            </Card>
 
             <Card
               title="Genres"
               route="/genres"
             >
               <Genres>
-                {genres.slice(0, 4).map(({ id, name, icons }) => (
+                {genres.map(({ id, name, icons }) => (
                   <Link
                     key={id}
                     href={`/genres/${id}`}

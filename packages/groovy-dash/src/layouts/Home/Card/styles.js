@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const View = styled.div`
   display: flex;
-  width: 100%;
   align-items: center;
 
   .swiper-container {
-    width: 100%;
+    max-width: 348px;
   }
 `;
 
