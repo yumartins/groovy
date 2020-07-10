@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useFetch } from 'groovy-hooks';
 import Link from 'next/link';
 
+import Loading from '../components/Loading';
 import { H5, P2 } from '../components/Title';
 import Card from '../layouts/Card';
 import Carousel from '../layouts/Carousel';
@@ -29,7 +30,7 @@ const Dash = () => {
 
   const albums = _albums ? _albums.albums.items : [];
   const genres = _genres ? _genres.categories.items : [];
-  const playlists = _playlists || {};
+  const playlists = _playlists ? _playlists.playlists.items : {};
 
   const listAlbums = albums && albums.slice(0, 5).map((album) => album.artists[0].id).toString();
 
@@ -40,7 +41,7 @@ const Dash = () => {
   return (
     <View>
       <Carousel
-        items={albums.length > 0 && albums}
+        items={albums}
         selected={selectedAlbum}
         onSelected={onSelectedAlbum}
       />
@@ -56,23 +57,23 @@ const Dash = () => {
               route="/artists"
             >
               {artists.length > 0
-                && artists.map(({
+                ? artists.map(({
                   id,
                   name,
                   genres: categories,
                   images,
                 }) => (
-                    <Link
-                      key={id}
-                      href={`/artists/${id}`}
-                    >
-                      <a>
-                        <img src={images[0].url} alt="" />
-                        <span>{categories[0]}</span>
-                        <H5>{name}</H5>
-                      </a>
-                    </Link>
-                  ))}
+                  <Link
+                    key={id}
+                    href={`/artists/${id}`}
+                  >
+                    <a>
+                      <img src={images[0].url} alt="" />
+                      <span>{categories[0]}</span>
+                      <H5>{name}</H5>
+                    </a>
+                  </Link>
+                )) : <Loading appearance="secondary" />}
             </Artists>
           </Card>
 
@@ -80,7 +81,7 @@ const Dash = () => {
             <Slider
               route="/playlists"
               title="Top Playlists"
-              items={playlists?.playlists?.items}
+              items={playlists}
               slidesPerPage={2}
             />
 
@@ -90,7 +91,7 @@ const Dash = () => {
             >
               <Genres>
                 {genres.length > 0
-                  && genres.slice(0, 4).map(({ id, name, icons }) => (
+                  ? genres.slice(0, 4).map(({ id, name, icons }) => (
                     <Link
                       key={id}
                       href={`/genres/${id}`}
@@ -100,7 +101,7 @@ const Dash = () => {
                         <H5>{name}</H5>
                       </a>
                     </Link>
-                  ))}
+                  )) : <Loading appearance="secondary" />}
               </Genres>
             </Card>
           </ListAlbumsBottom>
