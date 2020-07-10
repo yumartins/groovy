@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-import { api } from 'groovy-auth';
+import { useFetch } from 'groovy-hooks';
 import Link from 'next/link';
 
 import { H5, P2 } from '../components/Title';
@@ -19,73 +19,28 @@ import {
 } from '../styles/home';
 
 const Dash = () => {
-  const [genres, onGenres] = useState([]);
-  const [albums, onAlbums] = useState([]);
-  const [artists, onArtists] = useState([]);
-  const [playlists, onPlaylists] = useState({});
   const [selectedAlbum, onSelectedAlbum] = useState(0);
 
   const COUNTRY = 'BR';
 
-  useEffect(() => {
-    const getAlbums = async () => {
-      const { data } = await api.get('/browse/new-releases', {
-        params: {
-          country: COUNTRY,
-        },
-      });
+  const { data: _albums } = useFetch(`/browse/new-releases?country=${COUNTRY}`);
+  const { data: _genres } = useFetch(`/browse/categories?country=${COUNTRY}`);
+  const { data: _playlists } = useFetch(`/browse/featured-playlists?country=${COUNTRY}&limit=12`);
 
-      onAlbums(data.albums.items);
-    };
+  const albums = _albums ? _albums.albums.items : [];
+  const genres = _genres ? _genres.categories.items : [];
+  const playlists = _playlists || {};
 
-    const getGenres = async () => {
-      const { data } = await api.get('/browse/categories', {
-        params: {
-          country: COUNTRY,
-        },
-      });
+  const listAlbums = albums && albums.slice(0, 5).map((album) => album.artists[0].id).toString();
 
-      onGenres(data.categories.items);
-    };
+  const { data: _artists } = useFetch(`/artists?ids=${listAlbums && listAlbums}`);
 
-    const getPlaylists = async () => {
-      const { data } = await api.get('/browse/featured-playlists', {
-        params: {
-          country: COUNTRY,
-          limit: 12,
-        },
-      });
-
-      onPlaylists(data);
-    };
-
-    getAlbums();
-    getGenres();
-    getPlaylists();
-  }, []);
-
-  useEffect(() => {
-    const getArtists = async () => {
-      const listAlbums = albums && albums.slice(0, 5).map((album) => album.artists[0].id).toString();
-
-      if (listAlbums) {
-        const { data } = await api.get('/artists', {
-          params: {
-            ids: listAlbums,
-          },
-        });
-
-        onArtists(data.artists);
-      }
-    };
-
-    getArtists();
-  }, [albums]);
+  const artists = _artists ? _artists.artists : [];
 
   return (
     <View>
       <Carousel
-        items={albums}
+        items={albums.length > 0 && albums}
         selected={selectedAlbum}
         onSelected={onSelectedAlbum}
       />
