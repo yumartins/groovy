@@ -16,6 +16,7 @@ import {
   Playlists,
   ListTrack,
   ListAlbums,
+  ViewIsLoading,
   ListAlbumsBottom,
 } from '../styles/home';
 
@@ -30,13 +31,24 @@ const Dash = () => {
 
   const albums = _albums ? _albums.albums.items : [];
   const genres = _genres ? _genres.categories.items : [];
-  const playlists = _playlists ? _playlists.playlists.items : {};
+  const playlists = _playlists ? _playlists.playlists.items : [];
 
   const listAlbums = albums && albums.slice(0, 5).map((album) => album.artists[0].id).toString();
 
   const { data: _artists } = useFetch(`/artists?ids=${listAlbums && listAlbums}`);
 
   const artists = _artists ? _artists.artists : [];
+
+  if (albums.length <= 0
+    || genres.length <= 0
+    || playlists.length <= 0
+    || artists.length <= 0) {
+    return (
+      <ViewIsLoading>
+        <Loading />
+      </ViewIsLoading>
+    );
+  }
 
   return (
     <View>
@@ -56,24 +68,23 @@ const Dash = () => {
               title="Top Artists"
               route="/artists"
             >
-              {artists.length > 0
-                ? artists.map(({
-                  id,
-                  name,
-                  genres: categories,
-                  images,
-                }) => (
-                  <Link
-                    key={id}
-                    href={`/artists/${id}`}
-                  >
-                    <a>
-                      <img src={images[0].url} alt="" />
-                      <span>{categories[0]}</span>
-                      <H5>{name}</H5>
-                    </a>
-                  </Link>
-                )) : <Loading appearance="secondary" />}
+              {artists.map(({
+                id,
+                name,
+                genres: categories,
+                images,
+              }) => (
+                <Link
+                  key={id}
+                  href={`/artists/${id}`}
+                >
+                  <a>
+                    <img src={images[0].url} alt="" />
+                    <span>{categories[0]}</span>
+                    <H5>{name}</H5>
+                  </a>
+                </Link>
+              ))}
             </Artists>
           </Card>
 
@@ -90,18 +101,17 @@ const Dash = () => {
               route="/genres"
             >
               <Genres>
-                {genres.length > 0
-                  ? genres.slice(0, 4).map(({ id, name, icons }) => (
-                    <Link
-                      key={id}
-                      href={`/genres/${id}`}
-                    >
-                      <a>
-                        <img src={icons[0].url} alt="" />
-                        <H5>{name}</H5>
-                      </a>
-                    </Link>
-                  )) : <Loading appearance="secondary" />}
+                {genres.slice(0, 4).map(({ id, name, icons }) => (
+                  <Link
+                    key={id}
+                    href={`/genres/${id}`}
+                  >
+                    <a>
+                      <img src={icons[0].url} alt="" />
+                      <H5>{name}</H5>
+                    </a>
+                  </Link>
+                ))}
               </Genres>
             </Card>
           </ListAlbumsBottom>

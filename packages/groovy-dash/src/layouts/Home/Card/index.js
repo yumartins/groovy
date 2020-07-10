@@ -9,7 +9,6 @@ import {
   arrayOf,
 } from 'prop-types';
 
-import Loading from '../../../components/Loading';
 import { H5, P2 } from '../../../components/Title';
 import CardHome from '../../Card';
 import { View, Item } from './styles';
@@ -88,12 +87,9 @@ const Card = ({
           Prev
         </button>
 
-        {items.length > 0
-          ? (
-            <Swiper ref={ref} {...params}>
-              {items.map(renderItem)}
-            </Swiper>
-          ) : <Loading appearance="secondary" />}
+        <Swiper ref={ref} {...params}>
+          {items.map(renderItem)}
+        </Swiper>
 
         <button
           type="button"
