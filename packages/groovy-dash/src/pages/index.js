@@ -7,7 +7,6 @@ import Loading from '../components/Loading';
 import { H5, P2 } from '../components/Title';
 import Card from '../layouts/Card';
 import Carousel from '../layouts/Carousel';
-import Slider from '../layouts/Home/Card';
 import {
   List,
   View,
