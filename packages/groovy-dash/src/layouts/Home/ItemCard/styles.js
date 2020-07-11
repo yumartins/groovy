@@ -34,7 +34,7 @@ const View = styled.a`
     border-radius: 4px;
     background-color: rgba(85, 110, 252, .2);
     color: ${primary};
-    margin-top: 16px;
+    margin: 16px 0 8px 0;
     list-style: none;
     width: fit-content;
   }
@@ -42,7 +42,7 @@ const View = styled.a`
   ${H5} {
     color: ${white};
     font-weight: ${weight.bold};
-    margin-top: 8px;
+    margin-top: 16px;
   }
 
   ${P2} {
@@ -53,7 +53,7 @@ const View = styled.a`
   ${({ isHorizontal }) => isHorizontal && css`
     flex-direction: row;
     align-items: center;
-    padding: 4px;
+    padding: 8px;
     border-radius: 8px;
     background-color: ${grays._400};
 
@@ -64,6 +64,12 @@ const View = styled.a`
 
     ${H5} {
       margin: 0 0 0 16px;
+    }
+  `}
+
+  ${({ hasCategories }) => hasCategories && css`
+    ${H5} {
+      margin-top: 0;
     }
   `}
 `;

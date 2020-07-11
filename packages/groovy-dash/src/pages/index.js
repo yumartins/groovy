@@ -24,7 +24,7 @@ const Dash = () => {
   const COUNTRY = 'BR';
 
   const { data: _albums } = useFetch(`/browse/new-releases?country=${COUNTRY}&limit=5`);
-  const { data: _genres } = useFetch(`/browse/categories?country=${COUNTRY}&limit=4`);
+  const { data: _genres } = useFetch(`/browse/categories?country=${COUNTRY}&limit=3`);
   const { data: _playlists } = useFetch(`/browse/featured-playlists?country=${COUNTRY}&limit=2`);
 
   const albums = _albums ? _albums.albums.items : [];
@@ -33,7 +33,7 @@ const Dash = () => {
 
   const listAlbums = albums && albums.map((album) => album.artists[0].id).toString();
 
-  const { data: _artists } = useFetch(`/artists?ids=${listAlbums && listAlbums}`);
+  const { data: _artists } = useFetch(`${listAlbums ? `/artists?ids=${listAlbums}` : ''}`);
 
   const artists = _artists ? _artists.artists : [];
 
@@ -133,7 +133,7 @@ const Dash = () => {
             title="Player"
             route="/player"
           >
-            <div style={{ height: '700px' }} />
+            <div style={{ height: '600px' }} />
           </Card>
         </ListTrack>
       </List>

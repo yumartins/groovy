@@ -35,7 +35,7 @@ export const Artists = styled.div`
 export const Genres = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  row-gap: 24px;
+  row-gap: 16px;
 `;
 
 export const Playlists = styled.div`

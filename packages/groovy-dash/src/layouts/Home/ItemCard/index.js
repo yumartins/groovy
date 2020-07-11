@@ -1,5 +1,10 @@
 import Link from 'next/link';
-import { bool, number, string } from 'prop-types';
+import {
+  bool,
+  shape,
+  string,
+  arrayOf,
+} from 'prop-types';
 
 import { H5, P2 } from '../../../components/Title';
 import View from './styles';
@@ -10,7 +15,6 @@ const ItemCard = ({
   route,
   icons,
   images,
-  genres,
   categories,
   description,
   isHorizontal,
@@ -19,12 +23,14 @@ const ItemCard = ({
     href={`${route}/${id}`}
     passHref
   >
-    <View isHorizontal={isHorizontal}>
+    <View
+      isHorizontal={isHorizontal}
+      hasCategories={categories.length > 0}
+    >
       <img src={isHorizontal ? icons[0]?.url : images[0]?.url} alt="" />
       <div>
-        {categories && <li>{categories[0]}</li>}
+        {categories.length > 0 && <li>{categories[0]}</li>}
         <H5>{name}</H5>
-        {genres && <span>{genres[0]}</span>}
         {description && <P2 regular>{description}</P2>}
       </div>
     </View>
@@ -32,9 +38,16 @@ const ItemCard = ({
 );
 
 ItemCard.propTypes = {
-  id: number.isRequired,
+  id: string.isRequired,
   name: string,
   route: string,
+  icons: arrayOf(shape({
+    url: string,
+  })),
+  images: arrayOf(shape({
+    url: string,
+  })),
+  categories: arrayOf(string),
   description: string,
   isHorizontal: bool,
 };
@@ -42,6 +55,9 @@ ItemCard.propTypes = {
 ItemCard.defaultProps = {
   name: '',
   route: '',
+  icons: [],
+  images: [],
+  categories: [],
   description: '',
   isHorizontal: false,
 };

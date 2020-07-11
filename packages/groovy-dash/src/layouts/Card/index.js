@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import {
+  func,
+  array,
   string,
   object,
   symbol,
@@ -42,12 +44,12 @@ CardHome.propTypes = {
   route: string.isRequired,
   title: string.isRequired,
   children: objectOf(oneOfType([
-    object, symbol,
+    func, array, object, symbol, string,
   ])),
 };
 
 CardHome.defaultProps = {
-  children: [{}],
+  children: {},
 };
 
 export default CardHome;
