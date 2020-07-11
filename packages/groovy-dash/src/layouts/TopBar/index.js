@@ -1,7 +1,7 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { ChevronDown } from 'react-feather';
 
-import { api } from 'groovy-auth';
+import { useFetch } from 'groovy-hooks';
 
 import Input from '../../components/Input';
 import { P2 } from '../../components/Title';
@@ -14,20 +14,11 @@ import {
 } from './styles';
 
 const TopBar = () => {
-  const [me, onMe] = useState({});
   const [selected, onSelected] = useState(0);
 
   const ref = useRef(null);
 
-  useEffect(() => {
-    const getUser = async () => {
-      const { data } = await api.get('/me');
-
-      onMe(data);
-    };
-
-    getUser();
-  }, []);
+  const { data } = useFetch('/me');
 
   const items = [
     'Music',
@@ -61,8 +52,8 @@ const TopBar = () => {
       </Form>
 
       <User>
-        <P2>{me.display_name}</P2>
-        <img src={me.images && me.images[0].url} alt="" />
+        <P2>{data?.display_name}</P2>
+        <img src={data?.images[0].url} alt="" />
         <ChevronDown />
       </User>
     </View>
