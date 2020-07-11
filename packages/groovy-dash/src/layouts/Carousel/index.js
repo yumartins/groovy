@@ -64,7 +64,7 @@ const Carousel = ({
           </div>
         </Content>
 
-        <Image src={images && images[0].url} alt="" />
+        <Image src={images[0]?.url} alt="" />
       </Items>
     ))}
 

@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
 import { useFetch } from 'groovy-hooks';
-import Link from 'next/link';
 
 import Loading from '../components/Loading';
-import { H5, P2 } from '../components/Title';
 import Card from '../layouts/Card';
 import Carousel from '../layouts/Carousel';
+import ItemCard from '../layouts/Home/ItemCard';
 import {
   List,
   View,
@@ -49,8 +48,6 @@ const Dash = () => {
     );
   }
 
-  console.log(genres);
-
   return (
     <View>
       <Carousel
@@ -75,16 +72,14 @@ const Dash = () => {
                 genres: categories,
                 images,
               }) => (
-                <Link
+                <ItemCard
+                  id={id}
                   key={id}
-                  href={`/artists/${id}`}
-                >
-                  <a>
-                    <img src={images[0].url} alt="" />
-                    <span>{categories[0]}</span>
-                    <H5>{name}</H5>
-                  </a>
-                </Link>
+                  name={name}
+                  route="/artists"
+                  images={images}
+                  categories={categories}
+                />
               ))}
             </Artists>
           </Card>
@@ -101,16 +96,14 @@ const Dash = () => {
                   images,
                   description,
                 }) => (
-                  <Link
+                  <ItemCard
+                    id={id}
                     key={id}
-                    href={`/playlists/${id}`}
-                  >
-                    <a>
-                      <img src={images[0].url} alt="" />
-                      <H5>{name}</H5>
-                      <P2>{description}</P2>
-                    </a>
-                  </Link>
+                    name={name}
+                    route="/playlists"
+                    images={images}
+                    description={description}
+                  />
                 ))}
               </Playlists>
             </Card>
@@ -121,15 +114,14 @@ const Dash = () => {
             >
               <Genres>
                 {genres.map(({ id, name, icons }) => (
-                  <Link
+                  <ItemCard
+                    id={id}
                     key={id}
-                    href={`/genres/${id}`}
-                  >
-                    <a>
-                      <img src={icons[0].url} alt="" />
-                      <H5>{name}</H5>
-                    </a>
-                  </Link>
+                    name={name}
+                    icons={icons}
+                    route="/genres"
+                    isHorizontal
+                  />
                 ))}
               </Genres>
             </Card>
