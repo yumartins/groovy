@@ -41,7 +41,7 @@ export const Form = styled(Unform)`
   margin-left: 88px;
 `;
 
-export const User = styled.div`
+export const User = styled.a`
   display: flex;
   align-items: center;
   margin-left: auto;

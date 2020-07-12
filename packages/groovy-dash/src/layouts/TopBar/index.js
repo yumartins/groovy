@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { ChevronDown } from 'react-feather';
 
 import { useFetch } from 'groovy-hooks';
+import Link from 'next/link';
 
 import Input from '../../components/Input';
 import { P2 } from '../../components/Title';
@@ -51,11 +52,16 @@ const TopBar = () => {
         />
       </Form>
 
-      <User>
-        <P2>{data?.display_name}</P2>
-        <img src={data?.images[0].url} alt="" />
-        <ChevronDown />
-      </User>
+      <Link
+        href="/profile"
+        passHref
+      >
+        <User>
+          <P2>{data?.display_name}</P2>
+          <img src={data?.images[0].url} alt="" />
+          <ChevronDown />
+        </User>
+      </Link>
     </View>
   );
 };
